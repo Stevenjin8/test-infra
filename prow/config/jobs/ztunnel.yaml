@@ -14,10 +14,11 @@ jobs:
     types: [presubmit]
     requirements: [cratescache]
 
-  - name: coverage
-    command: [entrypoint, make, coverage]
-    types: [postsubmit]
-    requirements: [cratescache]
+#  FIXME(Stevenjin8) disable these tests until llvm-19 becomes available in Ubuntu.
+#  - name: coverage
+#    command: [entrypoint, make, coverage]
+#    types: [postsubmit]
+#    requirements: [cratescache]
 
   - name: release
     architectures: [amd64, arm64]
