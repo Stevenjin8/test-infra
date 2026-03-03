@@ -1,0 +1,3 @@
+[submodule "infra/cf/cncf-istio/registry-redirector"]
+	path = infra/cf/cncf-istio/registry-redirector
+	url = git@github.com:howardjohn/registry-redirector.git
