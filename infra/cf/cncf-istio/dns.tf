@@ -26,8 +26,6 @@ resource "cloudflare_dns_record" "atproto_txt" {
 resource "cloudflare_dns_record" "spf_deny_txt" {
   for_each = toset([
     "gcsweb",
-    "ibmcloud-perf-grafana",
-    "ibmcloud-perf",
     "prow",
   ])
 
@@ -70,7 +68,6 @@ resource "cloudflare_dns_record" "istio_mx" {
 
 resource "cloudflare_dns_record" "cname_records" {
   for_each = {
-    "*.eng"         = "eng.istio.io."
     "archive"       = "archive-istio.netlify.com."
     "elections"     = "router-default.apps.ospo-osci.z3b1.p1.openshiftapps.com."
     "em535"         = "u10461948.wl199.sendgrid.net."
@@ -93,18 +90,12 @@ resource "cloudflare_dns_record" "cname_records" {
 
 resource "cloudflare_dns_record" "a_records" {
   for_each = {
-    "@"                     = "75.2.60.5"
-    "chat"                  = "34.72.156.96"
-    "discuss"               = "75.2.60.5"
-    "eng"                   = "34.98.67.170"
-    "gcsweb"                = "34.98.121.133"
-    "ibmcloud-perf"         = "169.47.232.216"
-    "ibmcloud-perf-grafana" = "169.55.160.5" # this has a ttl of 900, but I think we can ignore that
-    "monitoring.prow"       = "35.227.227.231"
-    "perf.dashboard"        = "34.117.45.129"
-    "prow"                  = "35.190.0.30"
-    "prow-private"          = "35.190.0.30"
-    "velodrome"             = "35.244.155.245"
+    "@"               = "75.2.60.5"
+    "eng"             = "34.98.67.170"
+    "gcsweb"          = "34.98.121.133"
+    "monitoring.prow" = "35.227.227.231"
+    "prow"            = "35.190.0.30"
+    "prow-private"    = "35.190.0.30"
   }
 
   zone_id = var.zone_id
@@ -112,17 +103,4 @@ resource "cloudflare_dns_record" "a_records" {
   ttl     = 300
   type    = "A"
   content = each.value
-}
-
-resource "cloudflare_dns_record" "a_record_events" {
-  for_each = toset([
-    "151.101.1.195",
-    "151.101.65.195",
-  ])
-
-  zone_id = var.zone_id
-  name    = "events"
-  ttl     = 300
-  type    = "A"
-  content = each.key
 }
