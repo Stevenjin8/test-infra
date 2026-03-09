@@ -8,7 +8,7 @@ during this time the definitions and documentation should be seen as best-effort
 
 ## Overview
 
-Istio infrastructure spans a variety of platforms, but is primarily hosted on GCP.
+Istio infrastructure spans a variety of platforms, but is primarily hosted on GCP and Cloudflare.
 
 ### `istio-io` GCP Project
 
@@ -16,7 +16,6 @@ Istio infrastructure spans a variety of platforms, but is primarily hosted on GC
 
 * GCS bucket for terraform state (`istio-terraform`)
 * GCS buckets for istio releases
-* DNS configuration for istio.io
 
 ### `istio-release` GCP Project
 
@@ -39,6 +38,10 @@ Additionally, private artifacts are stored in this project.
 ### `istio-prerelease-testing` GCP Project
 
 This hosts `gcr.io/istio-prerelease-testing` and nothing else.
+
+## `CNCF Istio` Cloudflare Account
+
+This hosts DNS as well as a registry redirector so users don't have to change anything if we have to change registries.
 
 ## Using terraform
 
@@ -72,6 +75,8 @@ gcp
 └── project-1
 aws
 └── project-0
+cf
+└── project-3
 ```
 
 ## GCS Buckets
