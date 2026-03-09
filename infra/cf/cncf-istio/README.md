@@ -1,7 +1,7 @@
 # CNCF Istio Cloudflare
 
 We have a Cloudflare worker that redirects registry.istio.io to a configurable container registry.
-The code for the Cloudflare worker lives in https://github.com/howardjohn/registry-redirector.
+The code for the Cloudflare worker lives in [here](https://github.com/howardjohn/registry-redirector).
 To apply terraform, first clone the registry redirector:
 
 ```bash
