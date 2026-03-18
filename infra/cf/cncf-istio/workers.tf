@@ -24,8 +24,9 @@ resource "cloudflare_workers_script" "registry_redirect_istio" {
   }]
 }
 
-resource "cloudflare_workers_route" "registry_redirect_istio" {
-  zone_id    = var.zone_id
-  pattern    = "registry.istio.io/*"
-  script     = cloudflare_workers_script.registry_redirect_istio.id
+resource "cloudflare_workers_custom_domain" "registry_redirect_istio_custom_domain" {
+  account_id = var.account_id
+  hostname = "registry.istio.io"
+  service = cloudflare_workers_script.registry_redirect_istio.script_name
+  zone_id = var.zone_id
 }
