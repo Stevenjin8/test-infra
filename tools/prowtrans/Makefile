@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PROJECT = istio-testing
-HUB = gcr.io
+PROJECT = testing
+HUB = registry.istio.io
 VERSION ?= 0.0.9
 
 .PHONY: deploy

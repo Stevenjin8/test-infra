@@ -16,7 +16,7 @@ GO111MODULE="on" go get -u istio.io/test-infra/tools/prowtrans/cmd/prowtrans
 Install using Docker:
 
 ```shell
-docker pull gcr.io/istio-testing/prowtrans:latest
+docker pull registry.istio.io/testing/prowtrans:latest
 ```
 
 Install from source:
@@ -39,14 +39,14 @@ prowtrans <options>
 Run using Docker:
 
 ```shell
-docker run gcr.io/istio-testing/prowtrans:latest <options>
+docker run registry.istio.io/testing/prowtrans:latest <options>
 ```
 
 ```shell
 export INPUT="/prow/config/jobs"
 export CONFIGS="/prow/config/istio-private_jobs"
 docker run --mount type=bind,source="$(pwd)/prow",target="/prow" \
-    gcr.io/istio-testing/prowtrans:latest \
+    registry.istio.io/testing/prowtrans:latest \
     --configs=${CONFIGS} --input=${INPUT}
 ```
 

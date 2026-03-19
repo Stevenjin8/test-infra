@@ -272,7 +272,7 @@ func branchedImageName(image string, branch string) (error, string, string) {
 		// adding it as a new tag.
 		// For example, if the test image in the current Prow job
 		// config is
-		// `gcr.io/istio-testing/build-tools:master-gitsha`,
+		// `registry.istio.io/testing/build-tools:master-gitsha`,
 		// and the Prow job config for release-1.25 branch is
 		// supposed to be generated, the image will be added a
 		// new `release-1.25-gitsha` tag.

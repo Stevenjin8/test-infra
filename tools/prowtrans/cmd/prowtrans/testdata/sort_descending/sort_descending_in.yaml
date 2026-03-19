@@ -5,31 +5,31 @@ postsubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
   - name: job_a
     spec:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
   - name: job_c
     spec:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
   - name: job_d
     spec:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
   - name: job_b
     spec:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
 
 presubmits:
   istio/istio:
@@ -38,28 +38,28 @@ presubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
   - name: job_a
     spec:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
   - name: job_c
     spec:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
   - name: job_x
     spec:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
   - name: job_b
     spec:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13

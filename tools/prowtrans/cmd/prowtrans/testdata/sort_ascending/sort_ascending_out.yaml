@@ -6,7 +6,7 @@ postsubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
   - name: job_b_private
@@ -14,7 +14,7 @@ postsubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
   - name: job_c_private
@@ -22,7 +22,7 @@ postsubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
   - name: job_d_private
@@ -30,7 +30,7 @@ postsubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
   - name: job_e_private
@@ -38,7 +38,7 @@ postsubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
 presubmits:
@@ -49,7 +49,7 @@ presubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
   - always_run: false
@@ -58,7 +58,7 @@ presubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
   - always_run: false
@@ -67,7 +67,7 @@ presubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
   - always_run: false
@@ -76,7 +76,7 @@ presubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}
   - always_run: false
@@ -85,6 +85,6 @@ presubmits:
       containers:
       - command:
         - "true"
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources: {}

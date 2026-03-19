@@ -6,4 +6,4 @@ transforms:
   output: {{.Output}}
   tag: "forcetag"
   hub:
-    "istio-testing": "some-other-hub"
+    "testing": "some-other-hub"

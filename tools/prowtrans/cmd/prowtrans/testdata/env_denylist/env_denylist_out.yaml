@@ -15,7 +15,7 @@ periodics:
       env:
       - name: good-env
         value: good
-      image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+      image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
       name: ""
       resources:
         limits:
@@ -42,7 +42,7 @@ postsubmits:
         env:
         - name: good-env
           value: good
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources:
           limits:
@@ -70,7 +70,7 @@ presubmits:
         env:
         - name: good-env
           value: good
-        image: gcr.io/istio-testing/build-tools:master-2019-11-14T12-01-13
+        image: registry.istio.io/testing/build-tools:master-2019-11-14T12-01-13
         name: ""
         resources:
           limits:

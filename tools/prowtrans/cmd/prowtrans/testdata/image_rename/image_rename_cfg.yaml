@@ -5,4 +5,4 @@ transforms:
   input: {{.Input}}
   output: {{.Output}}
   hub:
-    "istio-testing": "some-other-hub"
+    "testing": "some-other-hub"
