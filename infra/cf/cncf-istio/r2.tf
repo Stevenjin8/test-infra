@@ -97,14 +97,14 @@ resource "cloudflare_ruleset" "blob_redirect" {
 
   rules = [for bucket in local.r2_public_buckets : {
     ref         = "blob_redirect_${bucket}"
-    description = "Redirect blob.istio.io/${bucket}/* to ${bucket}.r2.istio.io/*"
+    description = "Redirect blob.istio.io/${bucket}/* to ${bucket}.r2.istio.io/${1}"
     expression  = "(http.host eq \"blob.istio.io\" and starts_with(http.request.uri.path, \"/${bucket}/\"))"
     action      = "redirect"
     action_parameters = {
       from_value = {
-        status_code = 301
+        status_code = 308
         target_url = {
-          expression = "concat(\"https://${bucket}.r2.istio.io\", regex_replace(http.request.uri.path, \"^/${bucket}/\", \"/\"))"
+          expression = "concat(\"https://${bucket}.r2.istio.io\", wildcard_replace(http.request.uri.path, \"/${bucket}/*\", \"/$${1}\"))"
         }
         preserve_query_string = true
       }
