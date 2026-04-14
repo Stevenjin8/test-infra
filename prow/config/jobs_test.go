@@ -497,6 +497,7 @@ var SecretServiceAccounts = sets.NewString(
 	"prowjob-github-read",
 	"prowjob-release",
 	"prowjob-build-tools",
+	"prowjob-testing-write",
 )
 
 type Secret struct {
