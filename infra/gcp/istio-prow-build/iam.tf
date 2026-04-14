@@ -104,7 +104,6 @@ module "prowjob_testing_write_account" {
   secrets = [
     { name = "cf_r2_istio-build_access_key_id", project = "istio-testing" },
     { name = "cf_r2_istio-build_access_key_secret", project = "istio-testing" },
-    { name = "cf_r2_istio-build_s3_endpoint", project = "istio-testing" },
     { name = "cf_r2_istio-build_access_token", project = "istio-testing" },
   ]
   project_roles = [
