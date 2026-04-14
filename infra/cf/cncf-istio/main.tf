@@ -12,7 +12,7 @@ variable "zone_id" {
 
 locals {
   istio_registry_mappings = {
-    release = "index.docker.io/istio"
+    release = "gcr.io/istio-release"
     testing = "gcr.io/istio-testing"
   }
 }
