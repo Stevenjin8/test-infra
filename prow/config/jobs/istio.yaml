@@ -2,6 +2,18 @@ org: istio
 repo: istio
 support_release_branching: true
 image: gcr.io/istio-testing/build-tools:master-817db1b7909fb411f9c6d357b831b658285c26fb
+requirement_presets:
+  cf-r2-auth:
+    secrets:
+      - secret: cf_r2_istio-build_access_key_id
+        project: istio-testing
+        env: CF_ACCESS_KEY_ID
+      - secret: cf_r2_istio-build_access_key_secret
+        project: istio-testing
+        env: CF_ACCESS_KEY_SECRET
+      - secret: cf_r2_istio-build_s3_endpoint
+        project: istio-testing
+        env: CF_S3_ENDPOINT
 jobs:
   - name: unit-tests
     architectures: [amd64, arm64]
@@ -18,7 +30,7 @@ jobs:
     service_account_name: prowjob-testing-write
     types: [postsubmit]
     command: [entrypoint, prow/release-commit.sh]
-    requirements: [docker]
+    requirements: [docker, cf-r2-auth]
     resources: dedicated
 
   - name: benchmark
