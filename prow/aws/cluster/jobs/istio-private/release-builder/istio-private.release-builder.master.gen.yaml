@@ -22,8 +22,6 @@ postsubmits:
           value: "0"
         - name: DOCKER_CONFIG
           value: /var/run/ci/docker
-        - name: GCS_BUCKET
-          value: istio-prerelease-private/prerelease
         - name: HELM_BUCKET
           value: istio-prerelease-private/charts
         - name: PRERELEASE_DOCKER_HUB
@@ -265,8 +263,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GCS_BUCKET
-          value: istio-prerelease-private/prerelease
         - name: GOMAXPROCS
           value: "3"
         - name: PRERELEASE_DOCKER_HUB

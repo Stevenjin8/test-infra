@@ -12,14 +12,13 @@ transforms:
 - env:
     DOCKER_HUB: ghcr.io/istio/private
     DOCKER_PUSH_HUB: ghcr.io/istio/prow-private
-    GCS_BUCKET: istio-build-private/dev
     HELM_HUB: ghcr.io/istio/prow-private
     R2_BUCKET: istio-build-private/dev
   labels:
     preset-enable-netrc: "true"
     preset-override-envoy-r2: "true"
     preset-override-deps: master-istio
-  requirements: [cf-r2-istio-build-private-auth]
+  requirements: [cf-r2-istio-build-private-auth, testing-pusher]
   job-type: [postsubmit]
   job-allowlist: [release_istio_postsubmit]
 

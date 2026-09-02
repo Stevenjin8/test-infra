@@ -3597,8 +3597,6 @@ postsubmits:
           value: ghcr.io/istio/private
         - name: DOCKER_PUSH_HUB
           value: ghcr.io/istio/prow-private
-        - name: GCS_BUCKET
-          value: istio-build-private/dev
         - name: HELM_HUB
           value: ghcr.io/istio/prow-private
         - name: R2_BUCKET
@@ -3611,7 +3609,7 @@ postsubmits:
         - name: ISTIO_ENVOY_BASE_URL
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
-          value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
+          value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"},{"secret":"testing_ghcr_istio","file":"/var/run/ci/docker/config.json"}]'
         image: registry.istio.io/testing/build-tools:master-344978549023107b14c57d2ef8523d41b82ccc76
         name: ""
         resources:

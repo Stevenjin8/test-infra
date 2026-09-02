@@ -27,8 +27,10 @@ postsubmits:
           value: "1"
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GCS_BUILD_BUCKET
+        - name: R2_BUILD_BUCKET
           value: istio-build-private
+        - name: GCP_SECRETS
+          value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
         image: registry.istio.io/testing/build-tools-proxy:release-1.31-7f929a842d4a0cb482c9d18a9a369b177d51a555
         name: ""
         resources:
@@ -92,10 +94,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GCS_BUILD_BUCKET
-          value: istio-build-private
         - name: GOMAXPROCS
           value: "64"
+        - name: R2_BUILD_BUCKET
+          value: istio-build-private
+        - name: GCP_SECRETS
+          value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
         image: registry.istio.io/testing/build-tools-proxy:release-1.31-7f929a842d4a0cb482c9d18a9a369b177d51a555
         name: ""
         resources:

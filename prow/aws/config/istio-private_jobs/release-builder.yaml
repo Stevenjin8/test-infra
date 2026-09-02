@@ -17,7 +17,6 @@ transforms:
 # istio/release-builder master build warning jobs(s) - presubmit(s)
 - env:
     PRERELEASE_DOCKER_HUB: ghcr.io/istio/prow-private
-    GCS_BUCKET: istio-prerelease-private/prerelease
     R2_BUCKET: istio-prerelease-private/prerelease
   job-type: [presubmit]
   job-allowlist: [build-warning_release-builder]
@@ -28,7 +27,6 @@ transforms:
 - env:
     PRERELEASE_DOCKER_HUB: ghcr.io/istio/prow-private
     HELM_BUCKET: istio-prerelease-private/charts
-    GCS_BUCKET: istio-prerelease-private/prerelease
     R2_HELM_BUCKET: istio-prerelease-private/charts
     R2_BUCKET: istio-prerelease-private/prerelease
   labels:

@@ -21,7 +21,6 @@ transforms:
   repo-allowlist:
   - release-builder
 - env:
-    GCS_BUCKET: istio-prerelease-private/prerelease
     PRERELEASE_DOCKER_HUB: ghcr.io/istio/prow-private
     R2_BUCKET: istio-prerelease-private/prerelease
   job-allowlist:
@@ -34,7 +33,6 @@ transforms:
   - cf-r2-istio-prerelease-private-auth
   - testing-pusher
 - env:
-    GCS_BUCKET: istio-prerelease-private/prerelease
     HELM_BUCKET: istio-prerelease-private/charts
     PRERELEASE_DOCKER_HUB: ghcr.io/istio/prow-private
     R2_BUCKET: istio-prerelease-private/prerelease
