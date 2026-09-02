@@ -3258,11 +3258,11 @@ postsubmits:
         - name: DOCKER_HUB
           value: ghcr.io/istio/private
         - name: DOCKER_PUSH_HUB
-          value: ghcr.io/istio/testing
+          value: ghcr.io/istio/prow-private
         - name: GCS_BUCKET
           value: istio-build-private/dev
         - name: HELM_HUB
-          value: ghcr.io/istio/testing
+          value: ghcr.io/istio/prow-private
         - name: R2_BUCKET
           value: istio-build-private/dev
         - name: DEPENDENCIES

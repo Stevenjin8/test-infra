@@ -8,7 +8,9 @@ repo: istio
 transforms:
 - env:
     DOCKER_HUB: ghcr.io/istio/private
+    DOCKER_PUSH_HUB: ghcr.io/istio/prow-private
     GCS_BUCKET: istio-build-private/dev
+    HELM_HUB: ghcr.io/istio/prow-private
     R2_BUCKET: istio-build-private/dev
   job-allowlist:
   - release_istio_release-1.31_postsubmit

@@ -27,7 +27,7 @@ postsubmits:
         - name: HELM_BUCKET
           value: istio-prerelease-private/charts
         - name: PRERELEASE_DOCKER_HUB
-          value: us-docker.pkg.dev/istio-prow-private/istio-prow-private
+          value: ghcr.io/istio/prow-private
         - name: R2_BUCKET
           value: istio-prerelease-private/prerelease
         - name: R2_HELM_BUCKET
@@ -40,7 +40,7 @@ postsubmits:
         - name: ISTIO_ENVOY_BASE_URL
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
-          value: '[{"secret":"cf_r2_istio-prerelease-private_credentials","project":"istio-testing","env":"CF_PRERELEASE_CREDENTIALS"},{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
+          value: '[{"secret":"cf_r2_istio-prerelease-private_credentials","project":"istio-testing","env":"CF_PRERELEASE_CREDENTIALS"},{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"},{"secret":"testing_ghcr_istio","file":"/var/run/ci/docker/config.json"}]'
         image: registry.istio.io/testing/build-tools:master-344978549023107b14c57d2ef8523d41b82ccc76
         name: ""
         resources:
@@ -270,11 +270,13 @@ presubmits:
         - name: GOMAXPROCS
           value: "3"
         - name: PRERELEASE_DOCKER_HUB
-          value: us-docker.pkg.dev/istio-prow-private/istio-prow-private
+          value: ghcr.io/istio/prow-private
         - name: R2_BUCKET
           value: istio-prerelease-private/prerelease
+        - name: DOCKER_CONFIG
+          value: /var/run/ci/docker
         - name: GCP_SECRETS
-          value: '[{"secret":"cf_r2_istio-prerelease-private_credentials","project":"istio-testing","env":"CF_PRERELEASE_CREDENTIALS"}]'
+          value: '[{"secret":"cf_r2_istio-prerelease-private_credentials","project":"istio-testing","env":"CF_PRERELEASE_CREDENTIALS"},{"secret":"testing_ghcr_istio","file":"/var/run/ci/docker/config.json"}]'
         image: registry.istio.io/testing/build-tools:master-344978549023107b14c57d2ef8523d41b82ccc76
         name: ""
         resources:
