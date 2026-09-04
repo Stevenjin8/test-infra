@@ -15,15 +15,27 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.agentgateway
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.agentgateway
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -95,6 +107,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -102,12 +116,22 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
         - name: KUBERNETES_CNI
           value: calico
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -179,6 +203,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -188,12 +214,22 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.kube.helm.values=cni.ambient.ipv6=true --istio.test.ambient '
         - name: IP_FAMILIES
           value: IPv4,IPv6
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -265,6 +301,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -274,12 +312,22 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.kube.helm.values=cni.ambient.ipv6=true --istio.test.ambient '
         - name: IP_FAMILIES
           value: IPv6
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -351,6 +399,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/default.yaml
         - --topology
@@ -362,10 +412,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient --istio.test.ambient.multinetwork
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -437,6 +497,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - --topology
@@ -448,10 +510,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient --istio.test.ambient.multinetwork
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -523,6 +595,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -530,10 +604,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: '--istio.test.ambient --istio.test.nativeNftables '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -605,6 +689,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -612,11 +698,21 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: '--istio.test.kube.helm.values=cni.istioOwnedCNIConfig=true --istio.test.ambient.istioOwnedCNIConfig
             --istio.test.ambient '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -688,6 +784,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -695,10 +793,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -772,15 +880,27 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.istio.operatorOptions=values.pilot.env.UNSAFE_PILOT_ENABLE_RUNTIME_ASSERTIONS=true '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -852,13 +972,25 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.environment
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -937,17 +1069,29 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 --istio.test.istio.enableCNI=true '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: TEST_SELECT
           value: -flaky
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1019,15 +1163,27 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.environment
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: VARIANT
           value: distroless
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1099,6 +1255,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.environment
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
@@ -1106,10 +1264,20 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: IP_FAMILIES
           value: IPv4,IPv6
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1181,17 +1349,29 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.pilot.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.gatewayAPIOnly --istio.test.kube.gatewayClassName=istio-alt
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: T
           value: -run="TestGatewayConformance|TestGateway$$|TestHTTPRouteAndGRPCRouteCoexistence|TestInferencePoolMultipleTargetPorts|TestPilotResourceFilter"
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1263,13 +1443,25 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.helm.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1341,6 +1533,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.environment
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
@@ -1348,10 +1542,20 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: IP_FAMILIES
           value: IPv6
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1426,7 +1630,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.23.9
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.23.9
         - --kind-config
         - prow/config/mixedlb-service.yaml
         - test.integration.kube
@@ -1434,10 +1638,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1512,16 +1726,26 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.24.9
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.24.9
         - test.integration.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1596,16 +1820,26 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.25.9
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.25.9
         - test.integration.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1680,16 +1914,26 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.26.6
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.26.6
         - test.integration.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1764,7 +2008,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.27.8
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.27.8
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -1772,10 +2016,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1850,7 +2104,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.28.4
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.28.4
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -1858,10 +2112,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -1936,7 +2200,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.29.7
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.29.7
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -1944,10 +2208,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2022,7 +2296,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.30.3
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.30.3
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -2030,10 +2304,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2108,7 +2392,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.31.0
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.31.0
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -2116,10 +2400,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2194,7 +2488,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.32.0
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.32.0
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -2202,10 +2496,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2280,7 +2584,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.33.1
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.33.1
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -2288,10 +2592,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2366,7 +2680,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.34.0
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.34.0
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -2374,10 +2688,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2452,7 +2776,7 @@ postsubmits:
         - entrypoint
         - prow/integ-suite-kind.sh
         - --node-image
-        - registry.istio.io/testing/kind-node:v1.35.0
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.35.0
         - --kind-config
         - prow/config/modern.yaml
         - test.integration.kube
@@ -2460,10 +2784,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.retries=1 '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2535,15 +2869,27 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.pilot.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: GRPC_ECHO_IMAGE
           value: grpctesting/istio_echo_cpp
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2615,6 +2961,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -2624,8 +2972,18 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2697,6 +3055,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -2706,10 +3066,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.skipVM
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2781,6 +3151,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -2790,10 +3162,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.skipVM
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2865,6 +3247,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - test.integration.pilot.kube
@@ -2872,8 +3256,18 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -2945,13 +3339,25 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.pilot.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -3023,6 +3429,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -3032,10 +3440,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.skipVM
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -3107,6 +3525,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - test.integration.security.kube
@@ -3114,8 +3534,18 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -3187,13 +3617,25 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.security.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -3265,15 +3707,27 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.telemetry.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.peer_metadata_discovery
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -3345,6 +3799,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -3354,10 +3810,20 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.skipVM
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -3429,6 +3895,8 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - test.integration.telemetry.kube
@@ -3436,8 +3904,18 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -3509,13 +3987,25 @@ postsubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.telemetry.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -3952,6 +4442,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - test.integration.kube
@@ -3959,8 +4451,18 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4168,15 +4670,27 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.agentgateway
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.agentgateway
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4252,6 +4766,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -4259,12 +4775,22 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
         - name: KUBERNETES_CNI
           value: calico
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4340,6 +4866,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -4349,12 +4877,22 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.kube.helm.values=cni.ambient.ipv6=true --istio.test.ambient '
         - name: IP_FAMILIES
           value: IPv4,IPv6
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4429,6 +4967,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -4438,12 +4978,22 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.kube.helm.values=cni.ambient.ipv6=true --istio.test.ambient '
         - name: IP_FAMILIES
           value: IPv6
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4519,6 +5069,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/default.yaml
         - --topology
@@ -4530,10 +5082,20 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient --istio.test.ambient.multinetwork
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4609,6 +5171,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - --topology
@@ -4620,10 +5184,20 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient --istio.test.ambient.multinetwork
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4699,6 +5273,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -4706,10 +5282,20 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: '--istio.test.ambient --istio.test.nativeNftables '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4786,6 +5372,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -4793,11 +5381,21 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: '--istio.test.kube.helm.values=cni.istioOwnedCNIConfig=true --istio.test.ambient.istioOwnedCNIConfig
             --istio.test.ambient '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4873,6 +5471,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --kind-config
         - prow/config/ambient-sc.yaml
         - test.integration.ambient.kube
@@ -4880,10 +5480,20 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -4961,15 +5571,27 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.istio.operatorOptions=values.pilot.env.UNSAFE_PILOT_ENABLE_RUNTIME_ASSERTIONS=true '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5044,13 +5666,25 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.environment
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5130,15 +5764,27 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.pilot.kube.presubmit
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: ' --istio.test.istio.enableCNI=true '
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5213,15 +5859,27 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.environment
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: VARIANT
           value: distroless
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5296,6 +5954,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.environment
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
@@ -5303,10 +5963,20 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: IP_FAMILIES
           value: IPv4,IPv6
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5382,17 +6052,29 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.pilot.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.gatewayAPIOnly --istio.test.kube.gatewayClassName=istio-alt
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: T
           value: -run="TestGatewayConformance|TestGateway$$|TestHTTPRouteAndGRPCRouteCoexistence|TestInferencePoolMultipleTargetPorts|TestPilotResourceFilter"
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5468,13 +6150,25 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.helm.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5549,6 +6243,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.kube.environment
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
@@ -5556,10 +6252,20 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: IP_FAMILIES
           value: IPv6
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5635,15 +6341,27 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.pilot.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.istio.enableCNI=true --istio.test.nativeNftables=true
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5720,6 +6438,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -5729,8 +6449,18 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5806,6 +6536,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -5815,10 +6547,20 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.skipVM
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5894,6 +6636,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -5903,10 +6647,20 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.skipVM
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -5982,6 +6736,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - test.integration.pilot.kube
@@ -5989,8 +6745,18 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -6066,13 +6832,25 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.pilot.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -6147,6 +6925,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -6156,10 +6936,20 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.skipVM
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -6235,6 +7025,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - test.integration.security.kube
@@ -6242,8 +7034,18 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -6319,13 +7121,25 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.security.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -6400,15 +7214,27 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.telemetry.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.peer_metadata_discovery
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -6484,6 +7310,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - --topology-config
@@ -6493,10 +7321,20 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.skipVM
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -6572,6 +7410,8 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - --topology
         - MULTICLUSTER
         - test.integration.telemetry.kube
@@ -6579,8 +7419,18 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
@@ -6655,13 +7505,25 @@ presubmits:
       - command:
         - entrypoint
         - prow/integ-suite-kind.sh
+        - --node-image
+        - 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/kind-node:v1.36.0
         - test.integration.telemetry.kube
         env:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: ECR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "5"
+        - name: ISTIO_BASE_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
+        - name: ISTIO_BUILDKIT_IMAGE
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: METALLB_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: WASM_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
           valueFrom:
             configMapKeyRef:
