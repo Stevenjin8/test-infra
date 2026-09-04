@@ -6,7 +6,7 @@ jobs:
   - name: unit-tests
     architectures: [amd64, arm64]
     command: [entrypoint, make, -e, "T=-v -count=1", build, racetest, binaries-test]
-    resources: dedicated
+    resources: unit
 
   - name: release-test
     types: [presubmit]
@@ -67,6 +67,9 @@ jobs:
       - MULTICLUSTER
       - test.integration.telemetry.kube
     requirements: [kind, ptc]
+    env:
+    - name: INTEGRATION_TEST_FLAGS
+      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-telemetry-istiodremote
@@ -84,7 +87,7 @@ jobs:
     resources: multicluster
     env:
       - name: INTEGRATION_TEST_FLAGS
-        value: --istio.test.skipVM
+        value: --istio.test.skipVM --istio.test.retries=3
 
   - name: integ-ambient-calico
     modifiers: [presubmit_optional, presubmit_skipped]
@@ -123,6 +126,9 @@ jobs:
     - MULTICLUSTER
     - test.integration.kube
     requirements: [kind, tracing, ptc]
+    env:
+    - name: INTEGRATION_TEST_FLAGS
+      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-ipv6
@@ -180,6 +186,9 @@ jobs:
       - MULTICLUSTER
       - test.integration.pilot.kube
     requirements: [kind, ptc]
+    env:
+    - name: INTEGRATION_TEST_FLAGS
+      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-pilot-filebasedkubeconfig
@@ -195,6 +204,9 @@ jobs:
       - prow/config/topology/ambient-multicluster.json
       - test.integration.pilot.filebasedkubeconfig.kube
     requirements: [kind, ptc]
+    env:
+    - name: INTEGRATION_TEST_FLAGS
+      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-pilot-istiodremote
@@ -212,7 +224,7 @@ jobs:
     resources: multicluster
     env:
       - name: INTEGRATION_TEST_FLAGS
-        value: --istio.test.skipVM
+        value: --istio.test.skipVM --istio.test.retries=3
 
   - name: integ-pilot-istiodremote-mc
     command:
@@ -229,7 +241,7 @@ jobs:
     resources: multicluster
     env:
       - name: INTEGRATION_TEST_FLAGS
-        value: --istio.test.skipVM
+        value: --istio.test.skipVM --istio.test.retries=3
 
   - name: integ-agentgateway
     requirements: [kind, ptc]
@@ -259,6 +271,9 @@ jobs:
       - MULTICLUSTER
       - test.integration.security.kube
     requirements: [kind, ptc]
+    env:
+    - name: INTEGRATION_TEST_FLAGS
+      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-security-istiodremote
@@ -276,7 +291,7 @@ jobs:
     resources: multicluster
     env:
       - name: INTEGRATION_TEST_FLAGS
-        value: --istio.test.skipVM
+        value: --istio.test.skipVM --istio.test.retries=3
 
   - name: integ-ambient
     requirements: [kind, ptc]
@@ -341,10 +356,11 @@ jobs:
     - test.integration.ambient.kube
 
   - name: integ-ambient-mc
+    resources: multicluster
     requirements: [kind, ptc]
     env:
     - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.ambient --istio.test.ambient.multinetwork
+      value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
     command:
     - entrypoint
     - prow/integ-suite-kind.sh
@@ -365,10 +381,11 @@ jobs:
     # we can aggregate and analyze the results of the postsubmit runs without
     # bothering anybody with failed presubmit runs.
     modifiers: [presubmit_optional, presubmit_skipped]
+    resources: multicluster
     requirements: [kind, ptc]
     env:
     - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.ambient --istio.test.ambient.multinetwork
+      value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
     command:
     - entrypoint
     - prow/integ-suite-kind.sh
@@ -770,7 +787,7 @@ resources_presets:
   default:
     requests:
       memory: "3Gi"
-      cpu: "5000m"
+      cpu: "3000m"
     limits:
       memory: "24Gi"
       cpu: "5000m"
@@ -778,17 +795,15 @@ resources_presets:
   # We should consider if this is needed long term, as its expensive
   multicluster:
     requests:
-      memory: "3Gi"
-      # This ensures we have at most one multicluster job on a node
-      # Nodes have 16CPUs, with some overhead
-      cpu: "8000m"
+      memory: "5Gi"
+      cpu: "5000m"
     limits:
       memory: "24Gi"
       cpu: "8000m"
   lint:
     requests:
       memory: "16Gi"
-      cpu: "3000m"
+      cpu: "2250m"
     limits:
       memory: "24Gi"
   # Give 15 CPUs which will put us on a dedicated node, for consistency
@@ -796,6 +811,12 @@ resources_presets:
     requests:
       memory: "8Gi"
       cpu: "15000m"
+    limits:
+      memory: "24Gi"
+  unit:
+    requests:
+      memory: "6Gi"
+      cpu: "11250m"
     limits:
       memory: "24Gi"
 requirements: [gocache]

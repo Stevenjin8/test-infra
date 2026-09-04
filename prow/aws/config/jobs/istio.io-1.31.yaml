@@ -423,22 +423,29 @@ jobs:
         cpu: "8"
         memory: 24Gi
       requests:
-        cpu: "5"
+        cpu: "3"
         memory: 6Gi
     default:
       limits:
         cpu: "8"
         memory: 24Gi
       requests:
-        cpu: "5"
+        cpu: "3"
         memory: 3Gi
     lint:
       limits:
         cpu: "5"
         memory: 24Gi
       requests:
-        cpu: "3"
+        cpu: "2250m"
         memory: 16Gi
+    multicluster:
+      limits:
+        cpu: "8"
+        memory: 24Gi
+      requests:
+        cpu: "5"
+        memory: 5Gi
 - command:
   - entrypoint
   - prow/integ-suite-kind.sh
@@ -1552,6 +1559,7 @@ jobs:
     value: "0"
   image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
   name: doc.test.multicluster
+  resources: multicluster
   node_selector:
     testing: test-pool
   regex: ^(go.mod$|tests/|pkg/test/|prow/|content/en/boilerplates/snips/|content/en/docs/.*(test\.sh|/snips\.sh)$)
@@ -2635,19 +2643,26 @@ resources_presets:
       cpu: "8"
       memory: 24Gi
     requests:
-      cpu: "5"
+      cpu: "3"
       memory: 6Gi
   default:
     limits:
       cpu: "8"
       memory: 24Gi
     requests:
-      cpu: "5"
+      cpu: "3"
       memory: 3Gi
   lint:
     limits:
       cpu: "5"
       memory: 24Gi
     requests:
-      cpu: "3"
+      cpu: "2250m"
       memory: 16Gi
+  multicluster:
+    limits:
+      cpu: "8"
+      memory: 24Gi
+    requests:
+      cpu: "5"
+      memory: 5Gi

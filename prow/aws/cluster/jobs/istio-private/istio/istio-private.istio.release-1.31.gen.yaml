@@ -45,14 +45,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -141,14 +141,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -239,14 +239,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -337,14 +337,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -415,7 +415,7 @@ postsubmits:
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
-          value: "5"
+          value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ISTIO_BASE_REGISTRY
@@ -435,15 +435,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
-            cpu: "5"
+            cpu: "8"
             memory: 24Gi
           requests:
             cpu: "5"
-            memory: 3Gi
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -529,14 +529,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -624,14 +624,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -718,14 +718,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -812,14 +812,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -902,14 +902,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1003,14 +1003,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1095,14 +1095,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1189,14 +1189,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1283,14 +1283,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1373,14 +1373,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1467,14 +1467,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1563,14 +1563,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1659,14 +1659,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1755,14 +1755,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1851,14 +1851,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1947,14 +1947,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2043,14 +2043,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2139,14 +2139,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2235,14 +2235,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2331,14 +2331,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2427,14 +2427,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2519,14 +2519,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2613,15 +2613,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2709,15 +2709,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2805,15 +2805,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2897,15 +2897,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2987,14 +2987,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3083,15 +3083,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3175,15 +3175,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3265,14 +3265,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3357,14 +3357,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3453,15 +3453,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3545,15 +3545,15 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3635,14 +3635,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3722,7 +3722,7 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
@@ -3795,14 +3795,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             memory: 24Gi
           requests:
-            cpu: "15"
-            memory: 8Gi
+            cpu: 11250m
+            memory: 6Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3868,14 +3868,14 @@ postsubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             memory: 24Gi
           requests:
-            cpu: "15"
-            memory: 8Gi
+            cpu: 11250m
+            memory: 6Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3937,7 +3937,7 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
@@ -4003,14 +4003,14 @@ presubmits:
             configMapKeyRef:
               key: dependencies
               name: release-1.31-istio-deps
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4092,15 +4092,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -4169,14 +4169,14 @@ presubmits:
             configMapKeyRef:
               key: dependencies
               name: release-1.31-istio-deps
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4235,14 +4235,14 @@ presubmits:
             configMapKeyRef:
               key: dependencies
               name: release-1.31-istio-deps
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4320,14 +4320,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4420,14 +4420,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4522,14 +4522,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4623,14 +4623,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4704,7 +4704,7 @@ presubmits:
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
-          value: "5"
+          value: "8"
         - name: INTEGRATION_TEST_FLAGS
           value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ISTIO_BASE_REGISTRY
@@ -4724,15 +4724,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
-            cpu: "5"
+            cpu: "8"
             memory: 24Gi
           requests:
             cpu: "5"
-            memory: 3Gi
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -4822,14 +4822,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4922,14 +4922,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5020,14 +5020,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5118,14 +5118,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5211,14 +5211,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5311,14 +5311,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5406,14 +5406,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5503,14 +5503,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5601,14 +5601,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5695,14 +5695,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5792,14 +5792,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5890,15 +5890,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -5990,15 +5990,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6090,15 +6090,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6186,15 +6186,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6280,14 +6280,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -6379,15 +6379,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6475,15 +6475,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6569,14 +6569,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -6664,14 +6664,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -6764,15 +6764,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6860,15 +6860,15 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6953,14 +6953,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -7027,13 +7027,13 @@ presubmits:
             configMapKeyRef:
               key: dependencies
               name: release-1.31-istio-deps
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             memory: 24Gi
           requests:
-            cpu: "3"
+            cpu: 2250m
             memory: 16Gi
         securityContext:
           privileged: true
@@ -7093,14 +7093,14 @@ presubmits:
             configMapKeyRef:
               key: dependencies
               name: release-1.31-istio-deps
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -7160,7 +7160,7 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
@@ -7235,14 +7235,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             memory: 24Gi
           requests:
-            cpu: "15"
-            memory: 8Gi
+            cpu: 11250m
+            memory: 6Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -7311,14 +7311,14 @@ presubmits:
           value: s3://istio-build-private/proxy
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build-private_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             memory: 24Gi
           requests:
-            cpu: "15"
-            memory: 8Gi
+            cpu: 11250m
+            memory: 6Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -7377,14 +7377,14 @@ presubmits:
             configMapKeyRef:
               key: dependencies
               name: release-1.31-istio-deps
-        image: registry.istio.io/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
+        image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true

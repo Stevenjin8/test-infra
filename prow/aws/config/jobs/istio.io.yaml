@@ -38,6 +38,7 @@ jobs:
     regex: ^(go.mod$|tests/|pkg/test/|prow/|content/en/boilerplates/snips/|content/en/docs/.*(test\.sh|/snips\.sh)$)
 
   - name: doc.test.multicluster
+    resources: multicluster
     command:
     - entrypoint
     - prow/integ-suite-kind.sh
@@ -45,6 +46,9 @@ jobs:
     - MULTICLUSTER
     - doc.test.multicluster
     requirements: [kind]
+    env:
+    - name: INTEGRATION_TEST_FLAGS
+      value: --istio.test.retries=3
     regex: ^(go.mod$|tests/|pkg/test/|prow/|content/en/boilerplates/snips/|content/en/docs/.*(test\.sh|/snips\.sh)$)
 
   - name: doc.test.dualstack
@@ -125,14 +129,14 @@ resources_presets:
   default:
     requests:
       memory: "3Gi"
-      cpu: "5000m"
+      cpu: "3000m"
     limits:
       memory: "24Gi"
       cpu: "8000m"
   lint:
     requests:
       memory: "16Gi"
-      cpu: "3000m"
+      cpu: "2250m"
     limits:
       memory: "24Gi"
       cpu: "5000m"
@@ -140,6 +144,13 @@ resources_presets:
   6Gi:
     requests:
       memory: "6Gi"
+      cpu: "3000m"
+    limits:
+      memory: "24Gi"
+      cpu: "8000m"
+  multicluster:
+    requests:
+      memory: "5Gi"
       cpu: "5000m"
     limits:
       memory: "24Gi"

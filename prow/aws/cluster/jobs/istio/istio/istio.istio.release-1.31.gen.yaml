@@ -30,7 +30,7 @@ periodics:
           cpu: "5"
           memory: 24Gi
         requests:
-          cpu: "5"
+          cpu: "3"
           memory: 3Gi
       securityContext:
         privileged: true
@@ -92,7 +92,7 @@ periodics:
           cpu: "5"
           memory: 24Gi
         requests:
-          cpu: "5"
+          cpu: "3"
           memory: 3Gi
       securityContext:
         privileged: true
@@ -167,7 +167,7 @@ periodics:
           cpu: "5"
           memory: 24Gi
         requests:
-          cpu: "5"
+          cpu: "3"
           memory: 3Gi
       securityContext:
         privileged: true
@@ -277,7 +277,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -343,7 +343,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -419,7 +419,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -497,7 +497,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -575,7 +575,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -645,16 +645,16 @@ postsubmits:
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
-          value: "5"
+          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
-            cpu: "5"
+            cpu: "8"
             memory: 24Gi
           requests:
             cpu: "5"
-            memory: 3Gi
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -727,7 +727,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -802,7 +802,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -876,7 +876,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -950,7 +950,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1020,7 +1020,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1101,7 +1101,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1173,7 +1173,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1247,7 +1247,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1321,7 +1321,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1391,7 +1391,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1465,7 +1465,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1541,7 +1541,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1617,7 +1617,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1693,7 +1693,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1769,7 +1769,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1845,7 +1845,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1921,7 +1921,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1997,7 +1997,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2073,7 +2073,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2149,7 +2149,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2225,7 +2225,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2297,7 +2297,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2371,8 +2371,8 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2447,8 +2447,8 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2523,8 +2523,8 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2595,8 +2595,8 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2665,7 +2665,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2741,8 +2741,8 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2813,8 +2813,8 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -2883,7 +2883,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -2955,7 +2955,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3031,8 +3031,8 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3103,8 +3103,8 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3173,7 +3173,7 @@ postsubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3288,8 +3288,8 @@ postsubmits:
           limits:
             memory: 24Gi
           requests:
-            cpu: "15"
-            memory: 8Gi
+            cpu: 11250m
+            memory: 6Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3341,8 +3341,8 @@ postsubmits:
           limits:
             memory: 24Gi
           requests:
-            cpu: "15"
-            memory: 8Gi
+            cpu: 11250m
+            memory: 6Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3437,7 +3437,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3510,8 +3510,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -3569,7 +3569,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3617,7 +3617,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3680,7 +3680,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3758,7 +3758,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3838,7 +3838,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3917,7 +3917,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -3988,16 +3988,16 @@ presubmits:
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
-          value: "5"
+          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
         name: ""
         resources:
           limits:
-            cpu: "5"
+            cpu: "8"
             memory: 24Gi
           requests:
             cpu: "5"
-            memory: 3Gi
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -4072,7 +4072,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4150,7 +4150,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4226,7 +4226,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4302,7 +4302,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4373,7 +4373,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4451,7 +4451,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4524,7 +4524,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4599,7 +4599,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4675,7 +4675,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4747,7 +4747,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4822,7 +4822,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -4898,8 +4898,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -4976,8 +4976,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -5054,8 +5054,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -5128,8 +5128,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -5200,7 +5200,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5277,8 +5277,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -5351,8 +5351,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -5423,7 +5423,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5496,7 +5496,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5574,8 +5574,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -5648,8 +5648,8 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "8"
-            memory: 3Gi
+            cpu: "5"
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -5719,7 +5719,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5774,7 +5774,7 @@ presubmits:
           limits:
             memory: 24Gi
           requests:
-            cpu: "3"
+            cpu: 2250m
             memory: 16Gi
         securityContext:
           privileged: true
@@ -5823,7 +5823,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5874,7 +5874,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -5972,8 +5972,8 @@ presubmits:
           limits:
             memory: 24Gi
           requests:
-            cpu: "15"
-            memory: 8Gi
+            cpu: 11250m
+            memory: 6Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6026,8 +6026,8 @@ presubmits:
           limits:
             memory: 24Gi
           requests:
-            cpu: "15"
-            memory: 8Gi
+            cpu: 11250m
+            memory: 6Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -6075,7 +6075,7 @@ presubmits:
             cpu: "5"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true

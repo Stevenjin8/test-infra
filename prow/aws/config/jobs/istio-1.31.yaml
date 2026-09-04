@@ -216,7 +216,7 @@ jobs:
   - cache
   - cache
   - gocache
-  resources: dedicated
+  resources: unit
   resources_presets:
     dedicated:
       limits:
@@ -7227,6 +7227,7 @@ jobs:
     value: --istio.test.ambient --istio.test.ambient.multinetwork
   image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
   name: integ-ambient-mc
+  resources: multicluster
   node_selector:
     testing: test-pool
   requirement_presets:
@@ -11625,21 +11626,27 @@ jobs:
         cpu: "5"
         memory: 24Gi
       requests:
-        cpu: "5"
+        cpu: "3"
         memory: 3Gi
     lint:
       limits:
         memory: 24Gi
       requests:
-        cpu: "3"
+        cpu: "2250m"
         memory: 16Gi
     multicluster:
       limits:
         cpu: "8"
         memory: 24Gi
       requests:
-        cpu: "8"
-        memory: 3Gi
+        cpu: "5"
+        memory: 5Gi
+    unit:
+      limits:
+        memory: 24Gi
+      requests:
+        cpu: "11250m"
+        memory: 6Gi
   types:
   - presubmit
 - command:
@@ -13226,18 +13233,24 @@ resources_presets:
       cpu: "5"
       memory: 24Gi
     requests:
-      cpu: "5"
+      cpu: "3"
       memory: 3Gi
   lint:
     limits:
       memory: 24Gi
     requests:
-      cpu: "3"
+      cpu: "2250m"
       memory: 16Gi
   multicluster:
     limits:
       cpu: "8"
       memory: 24Gi
     requests:
-      cpu: "8"
-      memory: 3Gi
+      cpu: "5"
+      memory: 5Gi
+  unit:
+    limits:
+      memory: 24Gi
+    requests:
+      cpu: "11250m"
+      memory: 6Gi

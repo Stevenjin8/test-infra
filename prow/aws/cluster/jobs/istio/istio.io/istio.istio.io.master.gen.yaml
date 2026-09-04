@@ -44,7 +44,7 @@ periodics:
           cpu: "8"
           memory: 24Gi
         requests:
-          cpu: "5"
+          cpu: "3"
           memory: 3Gi
       securityContext:
         privileged: true
@@ -106,7 +106,7 @@ periodics:
           cpu: "8"
           memory: 24Gi
         requests:
-          cpu: "5"
+          cpu: "3"
           memory: 3Gi
       securityContext:
         privileged: true
@@ -158,7 +158,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -218,7 +218,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -267,6 +267,8 @@ postsubmits:
         env:
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: INTEGRATION_TEST_FLAGS
+          value: --istio.test.retries=3
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-7f5d77ade26da4b04ed42f353d9c26fbb3a4e7f1
@@ -277,7 +279,7 @@ postsubmits:
             memory: 24Gi
           requests:
             cpu: "5"
-            memory: 3Gi
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -332,7 +334,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -388,7 +390,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 6Gi
         securityContext:
           privileged: true
@@ -444,7 +446,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -500,7 +502,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -558,7 +560,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -612,7 +614,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -655,7 +657,7 @@ postsubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -706,7 +708,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -767,7 +769,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -818,6 +820,8 @@ presubmits:
         env:
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: INTEGRATION_TEST_FLAGS
+          value: --istio.test.retries=3
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-7f5d77ade26da4b04ed42f353d9c26fbb3a4e7f1
@@ -828,7 +832,7 @@ presubmits:
             memory: 24Gi
           requests:
             cpu: "5"
-            memory: 3Gi
+            memory: 5Gi
         securityContext:
           privileged: true
         volumeMounts:
@@ -885,7 +889,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -943,7 +947,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 6Gi
         securityContext:
           privileged: true
@@ -1001,7 +1005,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1059,7 +1063,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1119,7 +1123,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1175,7 +1179,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1219,7 +1223,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
@@ -1275,7 +1279,7 @@ presubmits:
             cpu: "8"
             memory: 24Gi
           requests:
-            cpu: "5"
+            cpu: "3"
             memory: 3Gi
         securityContext:
           privileged: true
