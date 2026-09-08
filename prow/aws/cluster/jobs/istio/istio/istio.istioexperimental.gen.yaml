@@ -183,8 +183,6 @@ presubmits:
         env:
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: OTEL_EXPORTER_OTLP_PROTOCOL
           value: grpc
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
@@ -677,7 +675,7 @@ presubmits:
         - name: BUILD_WITH_CONTAINER
           value: "0"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
+          value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -757,7 +755,7 @@ presubmits:
         - name: BUILD_WITH_CONTAINER
           value: "0"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
+          value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -1735,8 +1733,6 @@ presubmits:
         env:
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -1814,7 +1810,7 @@ presubmits:
         - name: BUILD_WITH_CONTAINER
           value: "0"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -1892,7 +1888,7 @@ presubmits:
         - name: BUILD_WITH_CONTAINER
           value: "0"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -1967,8 +1963,6 @@ presubmits:
         env:
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -2117,7 +2111,7 @@ presubmits:
         - name: BUILD_WITH_CONTAINER
           value: "0"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -2192,8 +2186,6 @@ presubmits:
         env:
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -2416,7 +2408,7 @@ presubmits:
         - name: BUILD_WITH_CONTAINER
           value: "0"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY
@@ -2491,8 +2483,6 @@ presubmits:
         env:
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: ISTIO_BASE_REGISTRY

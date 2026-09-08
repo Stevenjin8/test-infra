@@ -417,7 +417,7 @@ postsubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
+          value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -515,7 +515,7 @@ postsubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
+          value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2976,8 +2976,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3073,7 +3071,7 @@ postsubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3169,7 +3167,7 @@ postsubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3262,8 +3260,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3449,7 +3445,7 @@ postsubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3542,8 +3538,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3821,7 +3815,7 @@ postsubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3914,8 +3908,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4463,8 +4455,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5097,7 +5087,7 @@ presubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
+          value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5199,7 +5189,7 @@ presubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
+          value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -6463,8 +6453,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -6564,7 +6552,7 @@ presubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -6664,7 +6652,7 @@ presubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -6761,8 +6749,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -6955,7 +6941,7 @@ presubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -7052,8 +7038,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -7342,7 +7326,7 @@ presubmits:
         - name: GOMAXPROCS
           value: "8"
         - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.skipVM --istio.test.retries=3
+          value: --istio.test.skipVM
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -7439,8 +7423,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
         - name: GOMAXPROCS
           value: "8"
-        - name: INTEGRATION_TEST_FLAGS
-          value: --istio.test.retries=3
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE

@@ -47,8 +47,6 @@ jobs:
     - doc.test.multicluster
     requirements: [kind]
     env:
-    - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.retries=3
     regex: ^(go.mod$|tests/|pkg/test/|prow/|content/en/boilerplates/snips/|content/en/docs/.*(test\.sh|/snips\.sh)$)
 
   - name: doc.test.dualstack

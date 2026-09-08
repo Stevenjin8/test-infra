@@ -67,9 +67,6 @@ jobs:
       - MULTICLUSTER
       - test.integration.telemetry.kube
     requirements: [kind, ptc]
-    env:
-    - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-telemetry-istiodremote
@@ -87,7 +84,7 @@ jobs:
     resources: multicluster
     env:
       - name: INTEGRATION_TEST_FLAGS
-        value: --istio.test.skipVM --istio.test.retries=3
+        value: --istio.test.skipVM
 
   - name: integ-ambient-calico
     modifiers: [presubmit_optional, presubmit_skipped]
@@ -126,9 +123,6 @@ jobs:
     - MULTICLUSTER
     - test.integration.kube
     requirements: [kind, tracing, ptc]
-    env:
-    - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-ipv6
@@ -186,9 +180,6 @@ jobs:
       - MULTICLUSTER
       - test.integration.pilot.kube
     requirements: [kind, ptc]
-    env:
-    - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-pilot-filebasedkubeconfig
@@ -204,9 +195,6 @@ jobs:
       - prow/config/topology/ambient-multicluster.json
       - test.integration.pilot.filebasedkubeconfig.kube
     requirements: [kind, ptc]
-    env:
-    - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-pilot-istiodremote
@@ -224,7 +212,7 @@ jobs:
     resources: multicluster
     env:
       - name: INTEGRATION_TEST_FLAGS
-        value: --istio.test.skipVM --istio.test.retries=3
+        value: --istio.test.skipVM
 
   - name: integ-pilot-istiodremote-mc
     command:
@@ -241,7 +229,7 @@ jobs:
     resources: multicluster
     env:
       - name: INTEGRATION_TEST_FLAGS
-        value: --istio.test.skipVM --istio.test.retries=3
+        value: --istio.test.skipVM
 
   - name: integ-agentgateway
     requirements: [kind, ptc]
@@ -271,9 +259,6 @@ jobs:
       - MULTICLUSTER
       - test.integration.security.kube
     requirements: [kind, ptc]
-    env:
-    - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.retries=3
     resources: multicluster
 
   - name: integ-security-istiodremote
@@ -291,7 +276,7 @@ jobs:
     resources: multicluster
     env:
       - name: INTEGRATION_TEST_FLAGS
-        value: --istio.test.skipVM --istio.test.retries=3
+        value: --istio.test.skipVM
 
   - name: integ-ambient
     requirements: [kind, ptc]
@@ -360,7 +345,7 @@ jobs:
     requirements: [kind, ptc]
     env:
     - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
+      value: --istio.test.ambient --istio.test.ambient.multinetwork
     command:
     - entrypoint
     - prow/integ-suite-kind.sh
@@ -385,7 +370,7 @@ jobs:
     requirements: [kind, ptc]
     env:
     - name: INTEGRATION_TEST_FLAGS
-      value: --istio.test.ambient --istio.test.ambient.multinetwork --istio.test.retries=3
+      value: --istio.test.ambient --istio.test.ambient.multinetwork
     command:
     - entrypoint
     - prow/integ-suite-kind.sh
