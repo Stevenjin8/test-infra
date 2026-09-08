@@ -67,6 +67,10 @@ postsubmits:
         - name: HUB
           value: ghcr.io/istio/testing
         - name: MANIFEST_ARCH
+        - name: DOCKER_CONFIG
+          value: /var/run/ci/docker
+        - name: GCP_SECRETS
+          value: '[{"secret":"testing_ghcr_istio","file":"/var/run/ci/docker/config.json"}]'
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -139,10 +143,14 @@ postsubmits:
           value: istio
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: HUB
+          value: ghcr.io/istio/testing
         - name: MANIFEST_ARCH
           value: arm64 amd64
+        - name: DOCKER_CONFIG
+          value: /var/run/ci/docker
         - name: GCP_SECRETS
-          value: '[{"secret":"github_istio-testing_pusher","project":"istio-prow-build","env":"GH_TOKEN"}]'
+          value: '[{"secret":"github_istio-testing_pusher","project":"istio-prow-build","env":"GH_TOKEN"},{"secret":"testing_ghcr_istio","file":"/var/run/ci/docker/config.json"}]'
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
