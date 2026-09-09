@@ -75,14 +75,6 @@ periodics:
         value: "0"
       - name: ECR_REGISTRY
         value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-      - name: ISTIO_BASE_REGISTRY
-        value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-      - name: ISTIO_BUILDKIT_IMAGE
-        value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-      - name: WASM_REGISTRY
-        value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-      - name: METALLB_REGISTRY
-        value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
       - name: GOMAXPROCS
         value: "5"
       image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -326,14 +318,6 @@ postsubmits:
           value: --istio.test.agentgateway
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -402,14 +386,6 @@ postsubmits:
           value: calico
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -480,14 +456,6 @@ postsubmits:
           value: IPv4,IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -558,14 +526,6 @@ postsubmits:
           value: IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -636,14 +596,6 @@ postsubmits:
           value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -710,14 +662,6 @@ postsubmits:
           value: '--istio.test.ambient --istio.test.nativeNftables '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -785,14 +729,6 @@ postsubmits:
             --istio.test.ambient '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -859,14 +795,6 @@ postsubmits:
           value: --istio.test.ambient
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -933,14 +861,6 @@ postsubmits:
           value: ' --istio.test.istio.operatorOptions=values.pilot.env.UNSAFE_PILOT_ENABLE_RUNTIME_ASSERTIONS=true '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1003,14 +923,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1084,14 +996,6 @@ postsubmits:
           value: -flaky
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1156,14 +1060,6 @@ postsubmits:
           value: distroless
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1230,14 +1126,6 @@ postsubmits:
           value: IPv4,IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1304,14 +1192,6 @@ postsubmits:
           value: -run="TestGatewayConformance|TestGateway$$|TestHTTPRouteAndGRPCRouteCoexistence|TestInferencePoolMultipleTargetPorts"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1374,14 +1254,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1448,14 +1320,6 @@ postsubmits:
           value: IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1524,14 +1388,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1600,14 +1456,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1676,14 +1524,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1752,14 +1592,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1828,14 +1660,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1904,14 +1728,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -1980,14 +1796,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2056,14 +1864,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2132,14 +1932,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2208,14 +2000,6 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2280,14 +2064,6 @@ postsubmits:
           value: grpctesting/istio_echo_cpp
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2354,14 +2130,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2430,14 +2198,6 @@ postsubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2506,14 +2266,6 @@ postsubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2578,14 +2330,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2648,14 +2392,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2724,14 +2460,6 @@ postsubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2796,14 +2524,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2866,14 +2586,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -2938,14 +2650,6 @@ postsubmits:
           value: --istio.test.peer_metadata_discovery
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3014,14 +2718,6 @@ postsubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3086,14 +2782,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3156,14 +2844,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3493,14 +3173,6 @@ presubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3663,14 +3335,6 @@ presubmits:
           value: --istio.test.agentgateway
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3741,14 +3405,6 @@ presubmits:
           value: calico
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3821,14 +3477,6 @@ presubmits:
           value: IPv4,IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3900,14 +3548,6 @@ presubmits:
           value: IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -3979,14 +3619,6 @@ presubmits:
           value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4055,14 +3687,6 @@ presubmits:
           value: '--istio.test.ambient --istio.test.nativeNftables '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4133,14 +3757,6 @@ presubmits:
             --istio.test.ambient '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4209,14 +3825,6 @@ presubmits:
           value: --istio.test.ambient
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4285,14 +3893,6 @@ presubmits:
           value: ' --istio.test.istio.operatorOptions=values.pilot.env.UNSAFE_PILOT_ENABLE_RUNTIME_ASSERTIONS=true '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4356,14 +3956,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4434,14 +4026,6 @@ presubmits:
           value: ' --istio.test.istio.enableCNI=true '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4507,14 +4091,6 @@ presubmits:
           value: distroless
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4582,14 +4158,6 @@ presubmits:
           value: IPv4,IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4658,14 +4226,6 @@ presubmits:
           value: -run="TestGatewayConformance|TestGateway$$|TestHTTPRouteAndGRPCRouteCoexistence|TestInferencePoolMultipleTargetPorts"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4730,14 +4290,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4805,14 +4357,6 @@ presubmits:
           value: IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4881,14 +4425,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -4959,14 +4495,6 @@ presubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5037,14 +4565,6 @@ presubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5111,14 +4631,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5183,14 +4695,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5260,14 +4764,6 @@ presubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5334,14 +4830,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5406,14 +4894,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5479,14 +4959,6 @@ presubmits:
           value: --istio.test.peer_metadata_discovery
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5557,14 +5029,6 @@ presubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5631,14 +5095,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
@@ -5702,14 +5158,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: ISTIO_BASE_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
-        - name: ISTIO_BUILDKIT_IMAGE
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
-        - name: WASM_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: METALLB_REGISTRY
-          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: GOMAXPROCS
           value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-b191766806f5d2982fab99ee081c7e519d436019
