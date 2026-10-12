@@ -40,8 +40,6 @@ periodics:
         value: http://athens.athens.svc.cluster.local:3000|direct
       - name: GCP_SECRETS
         value: '[{"secret":"github_istio-testing_pusher","project":"istio-prow-build","env":"GH_TOKEN"}]'
-      - name: GOMAXPROCS
-        value: "64"
       image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools-proxy:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
       name: ""
       resources:
@@ -226,8 +224,6 @@ postsubmits:
           value: http://localhost:8080
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        - name: GOMAXPROCS
-          value: "64"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools-proxy:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -360,8 +356,6 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GCP_SECRETS
           value: '[{"secret":"github_istio-testing_pusher","project":"istio-prow-build","env":"GH_TOKEN"}]'
-        - name: GOMAXPROCS
-          value: "64"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -533,8 +527,6 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: BAZEL_BUILD_RBE_CACHE
           value: http://localhost:8080
-        - name: GOMAXPROCS
-          value: "64"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools-proxy:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -756,8 +748,6 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: BAZEL_BUILD_RBE_CACHE
           value: http://localhost:8080
-        - name: GOMAXPROCS
-          value: "64"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools-proxy:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -867,8 +857,6 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: BAZEL_BUILD_RBE_CACHE
           value: http://localhost:8080
-        - name: GOMAXPROCS
-          value: "64"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools-proxy:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:

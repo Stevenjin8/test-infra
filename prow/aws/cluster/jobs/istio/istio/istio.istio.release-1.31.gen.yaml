@@ -23,8 +23,6 @@ periodics:
         value: "0"
       - name: GOPROXY
         value: http://athens.athens.svc.cluster.local:3000|direct
-      - name: GOMAXPROCS
-        value: "5"
       image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
       name: ""
       resources:
@@ -79,6 +77,14 @@ periodics:
         value: http://athens.athens.svc.cluster.local:3000|direct
       - name: ECR_REGISTRY
         value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+      - name: DOCKER_REGISTRY
+        value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+      - name: GHCR_REGISTRY
+        value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+      - name: QUAY_REGISTRY
+        value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+      - name: K8S_REGISTRY
+        value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
       - name: ISTIO_BASE_REGISTRY
         value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
       - name: ISTIO_BUILDKIT_IMAGE
@@ -87,8 +93,6 @@ periodics:
         value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
       - name: METALLB_REGISTRY
         value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-      - name: GOMAXPROCS
-        value: "5"
       image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
       name: ""
       resources:
@@ -112,6 +116,9 @@ periodics:
         readOnly: true
       - mountPath: /var/lib/docker
         name: docker-root
+      - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+        name: eks-pod-identity-token
+        readOnly: true
     nodeSelector:
       kubernetes.io/arch: amd64
       testing: test-pool
@@ -126,6 +133,13 @@ periodics:
       name: modules
     - emptyDir: {}
       name: docker-root
+    - name: eks-pod-identity-token
+      projected:
+        sources:
+        - serviceAccountToken:
+            audience: pods.eks.amazonaws.com
+            expirationSeconds: 86400
+            path: eks-pod-identity-token
 - annotations:
     testgrid-alert-email: istio-oncall@googlegroups.com
     testgrid-dashboards: istio_release-1.31_istio_periodic
@@ -164,8 +178,6 @@ periodics:
         value: http://athens.athens.svc.cluster.local:3000|direct
       - name: GCP_SECRETS
         value: '[{"secret":"github_istio-testing_pusher","project":"istio-prow-build","env":"GH_TOKEN"}]'
-      - name: GOMAXPROCS
-        value: "5"
       image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
       name: ""
       resources:
@@ -288,8 +300,6 @@ postsubmits:
           value: /var/run/ci/docker
         - name: GCP_SECRETS
           value: '[{"secret":"release_docker_istio","project":"istio-prow-build","file":"/var/run/ci/docker/config.json"},{"secret":"github_istio-testing_pusher","project":"istio-prow-build","env":"GH_TOKEN"}]'
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -353,6 +363,14 @@ postsubmits:
           value: --istio.test.agentgateway
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -361,8 +379,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -386,6 +402,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -400,6 +419,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -431,6 +457,14 @@ postsubmits:
           value: calico
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -439,8 +473,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -464,6 +496,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -478,6 +513,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -511,6 +553,14 @@ postsubmits:
           value: IPv4,IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -519,8 +569,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -544,6 +592,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -558,6 +609,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -591,6 +649,14 @@ postsubmits:
           value: IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -599,8 +665,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -624,6 +688,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -638,6 +705,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -671,6 +745,14 @@ postsubmits:
           value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -679,8 +761,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -704,6 +784,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -718,6 +801,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -747,6 +837,14 @@ postsubmits:
           value: '--istio.test.ambient --istio.test.nativeNftables '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -755,8 +853,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -780,6 +876,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -794,6 +893,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -824,6 +930,14 @@ postsubmits:
             --istio.test.ambient '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -832,8 +946,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -857,6 +969,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -871,6 +986,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -900,6 +1022,14 @@ postsubmits:
           value: --istio.test.ambient
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -908,8 +1038,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -933,6 +1061,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -947,6 +1078,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -976,6 +1114,14 @@ postsubmits:
           value: ' --istio.test.istio.operatorOptions=values.pilot.env.UNSAFE_PILOT_ENABLE_RUNTIME_ASSERTIONS=true '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -984,8 +1130,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1009,6 +1153,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1023,6 +1170,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1048,6 +1202,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1056,8 +1218,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1081,6 +1241,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: arm64
         testing: test-pool
@@ -1100,6 +1263,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1131,6 +1301,14 @@ postsubmits:
           value: -flaky
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1139,8 +1317,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1164,6 +1340,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1178,6 +1357,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1205,6 +1391,14 @@ postsubmits:
           value: distroless
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1213,8 +1407,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1238,6 +1430,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1252,6 +1447,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1281,6 +1483,14 @@ postsubmits:
           value: IPv4,IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1289,8 +1499,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1314,6 +1522,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1328,6 +1539,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1357,6 +1575,14 @@ postsubmits:
           value: -run="TestGatewayConformance|TestGateway$$|TestHTTPRouteAndGRPCRouteCoexistence|TestInferencePoolMultipleTargetPorts"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1365,8 +1591,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1390,6 +1614,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1404,6 +1631,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1429,6 +1663,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1437,8 +1679,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1462,6 +1702,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1476,6 +1719,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1505,6 +1755,14 @@ postsubmits:
           value: IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1513,8 +1771,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1538,6 +1794,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1552,6 +1811,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1583,6 +1849,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1591,8 +1865,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1616,6 +1888,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1630,6 +1905,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1661,6 +1943,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1669,8 +1959,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1694,6 +1982,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1708,6 +1999,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1739,6 +2037,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1747,8 +2053,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1772,6 +2076,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1786,6 +2093,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1817,6 +2131,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1825,8 +2147,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1850,6 +2170,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1864,6 +2187,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1895,6 +2225,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1903,8 +2241,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -1928,6 +2264,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -1942,6 +2281,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -1973,6 +2319,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -1981,8 +2335,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2006,6 +2358,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2020,6 +2375,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2051,6 +2413,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2059,8 +2429,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2084,6 +2452,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2098,6 +2469,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2129,6 +2507,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2137,8 +2523,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2162,6 +2546,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2176,6 +2563,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2207,6 +2601,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2215,8 +2617,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2240,6 +2640,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2254,6 +2657,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2283,6 +2693,14 @@ postsubmits:
           value: ' --istio.test.retries=1 '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2291,8 +2709,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2316,6 +2732,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2330,6 +2749,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2357,6 +2783,14 @@ postsubmits:
           value: grpctesting/istio_echo_cpp
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2365,8 +2799,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2390,6 +2822,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2404,6 +2839,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2433,6 +2875,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2441,8 +2891,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2466,6 +2914,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2480,6 +2931,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2511,6 +2969,14 @@ postsubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2519,8 +2985,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2544,6 +3008,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2558,6 +3025,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2589,6 +3063,14 @@ postsubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2597,8 +3079,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2622,6 +3102,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2636,6 +3119,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2663,6 +3153,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2671,8 +3169,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2696,6 +3192,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2710,6 +3209,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2735,6 +3241,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2743,8 +3257,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2768,6 +3280,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2782,6 +3297,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2813,6 +3335,14 @@ postsubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2821,8 +3351,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2846,6 +3374,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2860,6 +3391,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2887,6 +3425,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2895,8 +3441,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2920,6 +3464,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -2934,6 +3481,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -2959,6 +3513,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -2967,8 +3529,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -2992,6 +3552,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3006,6 +3569,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -3033,6 +3603,14 @@ postsubmits:
           value: --istio.test.peer_metadata_discovery
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3041,8 +3619,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3066,6 +3642,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3080,6 +3659,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -3111,6 +3697,14 @@ postsubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3119,8 +3713,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3144,6 +3736,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3158,6 +3753,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -3185,6 +3787,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3193,8 +3803,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3218,6 +3826,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3232,6 +3843,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -3257,6 +3875,14 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3265,8 +3891,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3290,6 +3914,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3304,6 +3931,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
   - annotations:
       testgrid-alert-email: istio-oncall@googlegroups.com
       testgrid-dashboards: istio_release-1.31_istio_postsubmit
@@ -3544,8 +4178,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3611,6 +4243,14 @@ presubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3619,8 +4259,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3644,6 +4282,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3658,6 +4299,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )experimental-tracing,?($|\s.*))|((?m)^/test( | .*
       )experimental-tracing_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -3680,8 +4328,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3730,8 +4376,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3787,6 +4431,14 @@ presubmits:
           value: --istio.test.agentgateway
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3795,8 +4447,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3820,6 +4470,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3834,6 +4487,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-agentgateway,?($|\s.*))|((?m)^/test( | .* )integ-agentgateway_istio_release-1.31,?($|\s.*))
   - always_run: false
     annotations:
@@ -3867,6 +4527,14 @@ presubmits:
           value: calico
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3875,8 +4543,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3900,6 +4566,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3914,6 +4583,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ambient-calico,?($|\s.*))|((?m)^/test( | .*
       )integ-ambient-calico_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -3949,6 +4625,14 @@ presubmits:
           value: IPv4,IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -3957,8 +4641,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -3982,6 +4664,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -3996,6 +4681,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ambient-dual,?($|\s.*))|((?m)^/test( | .* )integ-ambient-dual_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4030,6 +4722,14 @@ presubmits:
           value: IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4038,8 +4738,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4063,6 +4761,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4077,6 +4778,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ambient-ipv6,?($|\s.*))|((?m)^/test( | .* )integ-ambient-ipv6_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4111,6 +4819,14 @@ presubmits:
           value: --istio.test.ambient --istio.test.ambient.multinetwork
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4119,8 +4835,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4144,6 +4858,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4158,6 +4875,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ambient-mc,?($|\s.*))|((?m)^/test( | .* )integ-ambient-mc_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4189,6 +4913,14 @@ presubmits:
           value: '--istio.test.ambient --istio.test.nativeNftables '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4197,8 +4929,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4222,6 +4952,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4236,6 +4969,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ambient-nftables,?($|\s.*))|((?m)^/test( | .*
       )integ-ambient-nftables_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -4269,6 +5009,14 @@ presubmits:
             --istio.test.ambient '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4277,8 +5025,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4302,6 +5048,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4316,6 +5065,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ambient-owned-cni,?($|\s.*))|((?m)^/test( |
       .* )integ-ambient-owned-cni_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -4347,6 +5103,14 @@ presubmits:
           value: --istio.test.ambient
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4355,8 +5119,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4380,6 +5142,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4394,6 +5159,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ambient,?($|\s.*))|((?m)^/test( | .* )integ-ambient_istio_release-1.31,?($|\s.*))
   - always_run: false
     annotations:
@@ -4425,6 +5197,14 @@ presubmits:
           value: ' --istio.test.istio.operatorOptions=values.pilot.env.UNSAFE_PILOT_ENABLE_RUNTIME_ASSERTIONS=true '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4433,8 +5213,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4458,6 +5236,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4472,6 +5253,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-assertion,?($|\s.*))|((?m)^/test( | .* )integ-assertion_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4498,6 +5286,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4506,8 +5302,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4531,6 +5325,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: arm64
         testing: test-pool
@@ -4550,6 +5347,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-basic-arm64,?($|\s.*))|((?m)^/test( | .* )integ-basic-arm64_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4578,6 +5382,14 @@ presubmits:
           value: ' --istio.test.istio.enableCNI=true '
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4586,8 +5398,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4611,6 +5421,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4625,6 +5438,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-cni,?($|\s.*))|((?m)^/test( | .* )integ-cni_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4653,6 +5473,14 @@ presubmits:
           value: distroless
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4661,8 +5489,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4686,6 +5512,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4700,6 +5529,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-distroless,?($|\s.*))|((?m)^/test( | .* )integ-distroless_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4730,6 +5566,14 @@ presubmits:
           value: IPv4,IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4738,8 +5582,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4763,6 +5605,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4777,6 +5622,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ds,?($|\s.*))|((?m)^/test( | .* )integ-ds_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4808,6 +5660,14 @@ presubmits:
           value: -run="TestGatewayConformance|TestGateway$$|TestHTTPRouteAndGRPCRouteCoexistence|TestInferencePoolMultipleTargetPorts"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4816,8 +5676,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4841,6 +5699,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4855,6 +5716,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-gateway-api-only,?($|\s.*))|((?m)^/test( | .*
       )integ-gateway-api-only_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -4882,6 +5750,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4890,8 +5766,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4915,6 +5789,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -4929,6 +5806,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-helm,?($|\s.*))|((?m)^/test( | .* )integ-helm_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -4959,6 +5843,14 @@ presubmits:
           value: IPv6
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -4967,8 +5859,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -4992,6 +5882,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5006,6 +5899,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-ipv6,?($|\s.*))|((?m)^/test( | .* )integ-ipv6_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -5037,6 +5937,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5045,8 +5953,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5070,6 +5976,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5084,6 +5993,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-pilot-filebasedkubeconfig,?($|\s.*))|((?m)^/test(
       | .* )integ-pilot-filebasedkubeconfig_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -5117,6 +6033,14 @@ presubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5125,8 +6049,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5150,6 +6072,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5164,6 +6089,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-pilot-istiodremote-mc,?($|\s.*))|((?m)^/test(
       | .* )integ-pilot-istiodremote-mc_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -5197,6 +6129,14 @@ presubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5205,8 +6145,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5230,6 +6168,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5244,6 +6185,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-pilot-istiodremote,?($|\s.*))|((?m)^/test( |
       .* )integ-pilot-istiodremote_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -5273,6 +6221,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5281,8 +6237,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5306,6 +6260,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5320,6 +6277,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-pilot-multicluster,?($|\s.*))|((?m)^/test( |
       .* )integ-pilot-multicluster_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -5347,6 +6311,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5355,8 +6327,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5380,6 +6350,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5394,6 +6367,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-pilot,?($|\s.*))|((?m)^/test( | .* )integ-pilot_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -5426,6 +6406,14 @@ presubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5434,8 +6422,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5459,6 +6445,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5473,6 +6462,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-security-istiodremote,?($|\s.*))|((?m)^/test(
       | .* )integ-security-istiodremote_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -5502,6 +6498,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5510,8 +6514,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5535,6 +6537,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5549,6 +6554,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-security-multicluster,?($|\s.*))|((?m)^/test(
       | .* )integ-security-multicluster_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -5576,6 +6588,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5584,8 +6604,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5609,6 +6627,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5623,6 +6644,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-security,?($|\s.*))|((?m)^/test( | .* )integ-security_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -5651,6 +6679,14 @@ presubmits:
           value: --istio.test.peer_metadata_discovery
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5659,8 +6695,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5684,6 +6718,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5698,6 +6735,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-telemetry-discovery,?($|\s.*))|((?m)^/test(
       | .* )integ-telemetry-discovery_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -5731,6 +6775,14 @@ presubmits:
           value: --istio.test.skipVM
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5739,8 +6791,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5764,6 +6814,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5778,6 +6831,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-telemetry-istiodremote,?($|\s.*))|((?m)^/test(
       | .* )integ-telemetry-istiodremote_istio_release-1.31,?($|\s.*))
   - always_run: true
@@ -5807,6 +6867,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5815,8 +6883,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5840,6 +6906,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5854,6 +6923,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-telemetry-mc,?($|\s.*))|((?m)^/test( | .* )integ-telemetry-mc_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -5880,6 +6956,14 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
@@ -5888,8 +6972,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -5913,6 +6995,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
       nodeSelector:
         kubernetes.io/arch: amd64
         testing: test-pool
@@ -5927,6 +7012,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
     trigger: ((?m)^/test( | .* )integ-telemetry,?($|\s.*))|((?m)^/test( | .* )integ-telemetry_istio_release-1.31,?($|\s.*))
   - always_run: true
     annotations:
@@ -5996,8 +7088,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -6049,8 +7139,6 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GCP_SECRETS
           value: '[{"secret":"github-read_github_read","project":"istio-prow-build","env":"GH_TOKEN"}]'
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -6258,8 +7346,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:

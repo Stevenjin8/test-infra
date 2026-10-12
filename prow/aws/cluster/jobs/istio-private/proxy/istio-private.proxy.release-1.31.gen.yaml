@@ -159,8 +159,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "64"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: R2_BUILD_BUCKET
@@ -422,8 +420,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "64"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools-proxy:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
@@ -669,8 +665,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "64"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools-proxy:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
@@ -792,8 +786,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "64"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools-proxy:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b

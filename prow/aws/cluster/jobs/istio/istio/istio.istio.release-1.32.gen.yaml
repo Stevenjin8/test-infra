@@ -23,8 +23,6 @@ periodics:
         value: "0"
       - name: GOPROXY
         value: http://athens.athens.svc.cluster.local:3000|direct
-      - name: GOMAXPROCS
-        value: "5"
       image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
       name: ""
       resources:
@@ -87,8 +85,6 @@ periodics:
         value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
       - name: METALLB_REGISTRY
         value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-      - name: GOMAXPROCS
-        value: "5"
       image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
       name: ""
       resources:
@@ -164,8 +160,6 @@ periodics:
         value: http://athens.athens.svc.cluster.local:3000|direct
       - name: GCP_SECRETS
         value: '[{"secret":"github_istio-testing_pusher","project":"istio-prow-build","env":"GH_TOKEN"}]'
-      - name: GOMAXPROCS
-        value: "5"
       image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
       name: ""
       resources:
@@ -288,8 +282,6 @@ postsubmits:
           value: /var/run/ci/docker
         - name: GCP_SECRETS
           value: '[{"secret":"release_docker_istio","project":"istio-prow-build","file":"/var/run/ci/docker/config.json"},{"secret":"github_istio-testing_pusher","project":"istio-prow-build","env":"GH_TOKEN"}]'
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -361,8 +353,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -439,8 +429,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -519,8 +507,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -599,8 +585,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -679,8 +663,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -755,8 +737,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -832,8 +812,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -908,8 +886,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -984,8 +960,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1056,8 +1030,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1139,8 +1111,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1213,8 +1183,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1289,8 +1257,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1365,8 +1331,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1437,8 +1401,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1513,8 +1475,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1591,8 +1551,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1669,8 +1627,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1747,8 +1703,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1823,8 +1777,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1897,8 +1849,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -1973,8 +1923,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2051,8 +1999,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2129,8 +2075,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2203,8 +2147,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2275,8 +2217,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2353,8 +2293,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2427,8 +2365,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2499,8 +2435,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2573,8 +2507,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2651,8 +2583,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2725,8 +2655,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -2797,8 +2725,6 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3076,8 +3002,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3151,8 +3075,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3212,8 +3134,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3262,8 +3182,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3327,8 +3245,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3407,8 +3323,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3489,8 +3403,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3570,8 +3482,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3651,8 +3561,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3729,8 +3637,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3809,8 +3715,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3887,8 +3791,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -3965,8 +3867,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4038,8 +3938,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4118,8 +4016,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4193,8 +4089,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4270,8 +4164,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4348,8 +4240,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4422,8 +4312,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4499,8 +4387,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4575,8 +4461,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4654,8 +4538,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4734,8 +4616,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4814,8 +4694,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4890,8 +4768,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -4964,8 +4840,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5043,8 +4917,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5119,8 +4991,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5193,8 +5063,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5268,8 +5136,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5348,8 +5214,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5424,8 +5288,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5497,8 +5359,6 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5605,8 +5465,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5658,8 +5516,6 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GCP_SECRETS
           value: '[{"secret":"github-read_github_read","project":"istio-prow-build","env":"GH_TOKEN"}]'
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -5867,8 +5723,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "5"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.32-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:

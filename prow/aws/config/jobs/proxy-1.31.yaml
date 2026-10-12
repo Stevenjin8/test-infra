@@ -115,11 +115,11 @@ jobs:
         resources:
           limits:
             cpu: "2"
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 4Gi
           requests:
             cpu: 500m
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 1Gi
         securityContext:
           allowPrivilegeEscalation: false

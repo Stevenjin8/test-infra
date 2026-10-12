@@ -630,6 +630,14 @@ func (j Job) Volumes() sets.Set[string] {
 			}
 		} else if v.EmptyDir != nil {
 			// no issues here, just skip it
+		} else if v.Projected != nil &&
+			len(v.Projected.Sources) == 1 &&
+			v.Projected.Sources[0].ServiceAccountToken != nil &&
+			v.Projected.Sources[0].ServiceAccountToken.Audience == "pods.eks.amazonaws.com" &&
+			v.Projected.Sources[0].ServiceAccountToken.ExpirationSeconds != nil &&
+			*v.Projected.Sources[0].ServiceAccountToken.ExpirationSeconds == 86400 &&
+			v.Projected.Sources[0].ServiceAccountToken.Path == "eks-pod-identity-token" {
+			// EKS Pod Identity token; intentionally narrower than automounting the Kubernetes API token.
 		} else {
 			panic(fmt.Sprintf("unknown volume: %+v", v))
 		}

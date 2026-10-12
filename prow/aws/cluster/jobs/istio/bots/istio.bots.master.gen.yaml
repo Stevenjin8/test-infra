@@ -21,8 +21,6 @@ postsubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -71,8 +69,6 @@ postsubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -114,8 +110,6 @@ postsubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -159,8 +153,6 @@ postsubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -204,8 +196,6 @@ postsubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -251,8 +241,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -297,8 +285,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -343,8 +329,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -389,8 +373,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "3"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:

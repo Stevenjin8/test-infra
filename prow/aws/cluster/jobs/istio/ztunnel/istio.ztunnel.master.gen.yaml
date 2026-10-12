@@ -11,21 +11,6 @@ postsubmits:
     name: coverage_ztunnel_postsubmit
     path_alias: istio.io/ztunnel
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - preference:
-              matchExpressions:
-              - key: cloud.google.com/machine-family
-                operator: In
-                values:
-                - c3
-                - c3d
-                - n4
-                - c4d
-                - c4a
-                - c4
-            weight: 1
       automountServiceAccountToken: false
       containers:
       - command:
@@ -37,8 +22,6 @@ postsubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -75,21 +58,6 @@ postsubmits:
     name: release-arm64_ztunnel_postsubmit
     path_alias: istio.io/ztunnel
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - preference:
-              matchExpressions:
-              - key: cloud.google.com/machine-family
-                operator: In
-                values:
-                - c3
-                - c3d
-                - n4
-                - c4d
-                - c4a
-                - c4
-            weight: 1
       automountServiceAccountToken: false
       containers:
       - command:
@@ -103,8 +71,6 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -151,21 +117,6 @@ postsubmits:
     name: release_ztunnel_postsubmit
     path_alias: istio.io/ztunnel
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - preference:
-              matchExpressions:
-              - key: cloud.google.com/machine-family
-                operator: In
-                values:
-                - c3
-                - c3d
-                - n4
-                - c4d
-                - c4a
-                - c4
-            weight: 1
       automountServiceAccountToken: false
       containers:
       - command:
@@ -179,8 +130,6 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -223,21 +172,6 @@ postsubmits:
     name: test_ztunnel_postsubmit
     path_alias: istio.io/ztunnel
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - preference:
-              matchExpressions:
-              - key: cloud.google.com/machine-family
-                operator: In
-                values:
-                - c3
-                - c3d
-                - n4
-                - c4d
-                - c4a
-                - c4
-            weight: 1
       automountServiceAccountToken: false
       containers:
       - command:
@@ -252,8 +186,6 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: RUST_CACHE_DIR
           value: /var/run/rustc-cache
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -296,21 +228,6 @@ presubmits:
     path_alias: istio.io/ztunnel
     rerun_command: /test bench
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - preference:
-              matchExpressions:
-              - key: cloud.google.com/machine-family
-                operator: In
-                values:
-                - c3
-                - c3d
-                - n4
-                - c4d
-                - c4a
-                - c4
-            weight: 1
       automountServiceAccountToken: false
       containers:
       - command:
@@ -321,8 +238,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:
@@ -360,21 +275,6 @@ presubmits:
     path_alias: istio.io/ztunnel
     rerun_command: /test test
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - preference:
-              matchExpressions:
-              - key: cloud.google.com/machine-family
-                operator: In
-                values:
-                - c3
-                - c3d
-                - n4
-                - c4d
-                - c4a
-                - c4
-            weight: 1
       automountServiceAccountToken: false
       containers:
       - command:
@@ -389,8 +289,6 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: RUST_CACHE_DIR
           value: /var/run/rustc-cache
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
         name: ""
         resources:

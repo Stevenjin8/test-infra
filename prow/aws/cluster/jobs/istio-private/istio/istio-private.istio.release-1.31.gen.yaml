@@ -22,10 +22,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -34,8 +36,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -70,6 +76,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -88,6 +97,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -118,10 +134,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -130,10 +148,14 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: KUBERNETES_CNI
           value: calico
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -168,6 +190,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -186,6 +211,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -218,10 +250,12 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -232,8 +266,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -268,6 +306,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -286,6 +327,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -318,10 +366,12 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -332,8 +382,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -368,6 +422,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -386,6 +443,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -420,10 +484,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -432,8 +498,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -468,6 +538,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -486,6 +559,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -516,10 +596,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -528,8 +610,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -564,6 +650,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -582,6 +671,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -612,10 +708,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -625,8 +723,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -661,6 +763,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -679,6 +784,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -709,10 +821,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -721,8 +835,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -757,6 +875,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -775,6 +896,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -805,10 +933,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -817,8 +947,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -853,6 +987,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -871,6 +1008,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -899,18 +1043,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -945,6 +1095,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -968,6 +1121,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -998,10 +1158,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1010,8 +1172,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: TEST_SELECT
           value: -flaky
         - name: WASM_REGISTRY
@@ -1048,6 +1214,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1066,6 +1235,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1094,18 +1270,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: VARIANT
           value: distroless
         - name: WASM_REGISTRY
@@ -1142,6 +1324,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1160,6 +1345,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1190,10 +1382,12 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -1202,8 +1396,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -1238,6 +1436,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1256,6 +1457,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1284,10 +1492,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1296,8 +1506,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: T
           value: -run="TestGatewayConformance|TestGateway$$|TestHTTPRouteAndGRPCRouteCoexistence|TestInferencePoolMultipleTargetPorts"
         - name: WASM_REGISTRY
@@ -1334,6 +1548,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1352,6 +1569,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1380,18 +1604,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -1426,6 +1656,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1444,6 +1677,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1474,10 +1714,12 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -1486,8 +1728,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -1522,6 +1768,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1540,6 +1789,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1572,10 +1828,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1584,8 +1842,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -1620,6 +1882,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1638,6 +1903,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1670,10 +1942,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1682,8 +1956,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -1718,6 +1996,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1736,6 +2017,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1768,10 +2056,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1780,8 +2070,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -1816,6 +2110,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1834,6 +2131,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1866,10 +2170,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1878,8 +2184,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -1914,6 +2224,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -1932,6 +2245,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -1964,10 +2284,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1976,8 +2298,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2012,6 +2338,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2030,6 +2359,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2062,10 +2398,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2074,8 +2412,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2110,6 +2452,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2128,6 +2473,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2160,10 +2512,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2172,8 +2526,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2208,6 +2566,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2226,6 +2587,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2258,10 +2626,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2270,8 +2640,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2306,6 +2680,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2324,6 +2701,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2356,10 +2740,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2368,8 +2754,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2404,6 +2794,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2422,6 +2815,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2452,10 +2852,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2464,8 +2866,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2500,6 +2906,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2518,6 +2927,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2546,10 +2962,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GRPC_ECHO_IMAGE
@@ -2558,8 +2976,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2594,6 +3016,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2612,6 +3037,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2644,18 +3076,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2690,6 +3128,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2708,6 +3149,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2740,10 +3188,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2752,8 +3202,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2788,6 +3242,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2806,6 +3263,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2838,10 +3302,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2850,8 +3316,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2886,6 +3356,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2904,6 +3377,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -2934,18 +3414,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -2980,6 +3466,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -2998,6 +3487,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -3026,18 +3522,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -3072,6 +3574,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -3090,6 +3595,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -3122,10 +3634,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -3134,8 +3648,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -3170,6 +3688,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -3188,6 +3709,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -3218,18 +3746,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -3264,6 +3798,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -3282,6 +3819,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -3310,18 +3854,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -3356,6 +3906,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -3374,6 +3927,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -3402,10 +3962,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -3414,8 +3976,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -3450,6 +4016,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -3468,6 +4037,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -3500,10 +4076,12 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -3512,8 +4090,12 @@ postsubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -3548,6 +4130,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -3566,6 +4151,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -3596,18 +4188,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -3642,6 +4240,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -3660,6 +4261,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -3688,18 +4296,24 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -3734,6 +4348,9 @@ postsubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -3752,6 +4369,13 @@ postsubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -4083,8 +4707,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES
@@ -4160,18 +4782,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -4206,6 +4834,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -4224,6 +4855,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -4253,8 +4891,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES
@@ -4321,8 +4957,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES
@@ -4392,10 +5026,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4404,8 +5040,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -4440,6 +5080,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -4458,6 +5101,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -4492,10 +5142,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4504,10 +5156,14 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: KUBERNETES_CNI
           value: calico
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -4542,6 +5198,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -4560,6 +5219,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -4596,10 +5262,12 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4610,8 +5278,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -4646,6 +5318,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -4664,6 +5339,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -4699,10 +5381,12 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4713,8 +5397,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -4749,6 +5437,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -4767,6 +5458,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -4804,10 +5502,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4816,8 +5516,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -4852,6 +5556,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -4870,6 +5577,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -4904,10 +5618,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4916,8 +5632,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -4952,6 +5672,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -4970,6 +5693,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5005,10 +5735,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5018,8 +5750,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -5054,6 +5790,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5072,6 +5811,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5106,10 +5852,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5118,8 +5866,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -5154,6 +5906,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5172,6 +5927,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5206,10 +5968,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5218,8 +5982,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -5254,6 +6022,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5272,6 +6043,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5303,18 +6081,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -5349,6 +6133,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5372,6 +6159,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5403,10 +6197,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5415,8 +6211,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -5451,6 +6251,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5469,6 +6272,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5500,18 +6310,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: VARIANT
           value: distroless
         - name: WASM_REGISTRY
@@ -5548,6 +6364,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5566,6 +6385,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5599,10 +6425,12 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -5611,8 +6439,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -5647,6 +6479,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5665,6 +6500,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5697,10 +6539,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5709,8 +6553,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: T
           value: -run="TestGatewayConformance|TestGateway$$|TestHTTPRouteAndGRPCRouteCoexistence|TestInferencePoolMultipleTargetPorts"
         - name: WASM_REGISTRY
@@ -5747,6 +6595,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5765,6 +6616,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5797,18 +6655,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -5843,6 +6707,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5861,6 +6728,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5894,10 +6768,12 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -5906,8 +6782,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -5942,6 +6822,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -5960,6 +6843,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -5996,18 +6886,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6042,6 +6938,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6060,6 +6959,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6096,10 +7002,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -6108,8 +7016,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6144,6 +7056,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6162,6 +7077,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6198,10 +7120,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -6210,8 +7134,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6246,6 +7174,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6264,6 +7195,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6298,18 +7236,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6344,6 +7288,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6362,6 +7309,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6394,18 +7348,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6440,6 +7400,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6458,6 +7421,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6493,10 +7463,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -6505,8 +7477,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6541,6 +7517,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6559,6 +7538,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6593,18 +7579,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6639,6 +7631,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6657,6 +7652,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6689,18 +7691,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6735,6 +7743,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6753,6 +7764,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6784,10 +7802,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -6796,8 +7816,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6832,6 +7856,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6850,6 +7877,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6886,10 +7920,12 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -6898,8 +7934,12 @@ presubmits:
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -6934,6 +7974,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -6952,6 +7995,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -6986,18 +8036,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -7032,6 +8088,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -7050,6 +8109,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -7081,18 +8147,24 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
+        - name: DOCKER_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
+        - name: GHCR_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
         - name: ISTIO_BUILDKIT_IMAGE
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/buildkit:v0.11.0
+        - name: K8S_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
         - name: METALLB_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+        - name: QUAY_REGISTRY
+          value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
         - name: WASM_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
         - name: DEPENDENCIES
@@ -7127,6 +8199,9 @@ presubmits:
           readOnly: true
         - mountPath: /var/lib/docker
           name: docker-root
+        - mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+          name: eks-pod-identity-token
+          readOnly: true
         - mountPath: /home/.netrc
           name: netrc
           readOnly: true
@@ -7145,6 +8220,13 @@ presubmits:
         name: modules
       - emptyDir: {}
         name: docker-root
+      - name: eks-pod-identity-token
+        projected:
+          sources:
+          - serviceAccountToken:
+              audience: pods.eks.amazonaws.com
+              expirationSeconds: 86400
+              path: eks-pod-identity-token
       - name: netrc
         secret:
           items:
@@ -7239,8 +8321,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES
@@ -7531,8 +8611,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES

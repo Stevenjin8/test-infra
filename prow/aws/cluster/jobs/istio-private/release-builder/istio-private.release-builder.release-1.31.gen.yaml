@@ -101,8 +101,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "3"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
@@ -157,8 +155,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "3"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: VERSION
@@ -215,8 +211,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "3"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
@@ -277,8 +271,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "3"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: PRERELEASE_DOCKER_HUB
@@ -331,8 +323,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "3"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
@@ -390,8 +380,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "3"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: VERSION
@@ -451,8 +439,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "3"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b

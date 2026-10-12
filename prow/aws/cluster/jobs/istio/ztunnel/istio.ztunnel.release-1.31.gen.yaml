@@ -37,8 +37,6 @@ postsubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -103,8 +101,6 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -179,8 +175,6 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GCP_SECRETS
           value: '[{"secret":"cf_r2_istio-build_credentials","project":"istio-testing","env":"CF_CREDENTIALS"}]'
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -252,8 +246,6 @@ postsubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: RUST_CACHE_DIR
           value: /var/run/rustc-cache
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -321,8 +313,6 @@ presubmits:
           value: "0"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:
@@ -389,8 +379,6 @@ presubmits:
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: RUST_CACHE_DIR
           value: /var/run/rustc-cache
-        - name: GOMAXPROCS
-          value: "8"
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:release-1.31-ecb3ba5a877b44bf6c67cb50a3aaa1c18343699b
         name: ""
         resources:

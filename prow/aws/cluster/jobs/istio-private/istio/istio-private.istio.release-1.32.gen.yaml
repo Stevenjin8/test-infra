@@ -24,8 +24,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -120,8 +118,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -220,8 +216,6 @@ postsubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -320,8 +314,6 @@ postsubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -422,8 +414,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -518,8 +508,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -614,8 +602,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -711,8 +697,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -807,8 +791,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -901,8 +883,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -1000,8 +980,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1096,8 +1074,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -1192,8 +1168,6 @@ postsubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -1286,8 +1260,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1382,8 +1354,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -1476,8 +1446,6 @@ postsubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -1574,8 +1542,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1672,8 +1638,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1770,8 +1734,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1866,8 +1828,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -1960,8 +1920,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: GRPC_ECHO_IMAGE
@@ -2058,8 +2016,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -2154,8 +2110,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2252,8 +2206,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2348,8 +2300,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -2440,8 +2390,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -2536,8 +2484,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2632,8 +2578,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -2724,8 +2668,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -2816,8 +2758,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -2914,8 +2854,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -3010,8 +2948,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -3102,8 +3038,6 @@ postsubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -3495,8 +3429,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES
@@ -3574,8 +3506,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -3665,8 +3595,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES
@@ -3733,8 +3661,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES
@@ -3806,8 +3732,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -3906,8 +3830,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4010,8 +3932,6 @@ presubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4113,8 +4033,6 @@ presubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4218,8 +4136,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4318,8 +4234,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4419,8 +4333,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4520,8 +4432,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4620,8 +4530,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4717,8 +4625,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -4817,8 +4723,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -4914,8 +4818,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -5013,8 +4915,6 @@ presubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -5111,8 +5011,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5211,8 +5109,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -5308,8 +5204,6 @@ presubmits:
           value: "true"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -5406,8 +5300,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5509,8 +5401,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -5609,8 +5499,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5711,8 +5599,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -5811,8 +5697,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -5907,8 +5791,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -6006,8 +5888,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -6106,8 +5986,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -6202,8 +6080,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -6297,8 +6173,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -6399,8 +6273,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: INTEGRATION_TEST_FLAGS
@@ -6499,8 +6371,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -6594,8 +6464,6 @@ presubmits:
           value: "0"
         - name: ECR_REGISTRY
           value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: ISTIO_BASE_REGISTRY
@@ -6750,8 +6618,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES
@@ -7042,8 +6908,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "5"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: DEPENDENCIES

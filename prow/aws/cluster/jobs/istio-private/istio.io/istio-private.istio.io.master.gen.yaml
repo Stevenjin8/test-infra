@@ -23,8 +23,6 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -85,8 +83,6 @@ postsubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -147,8 +143,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -205,8 +199,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -263,8 +255,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -321,8 +311,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -379,8 +367,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -439,8 +425,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -495,8 +479,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -540,8 +522,6 @@ postsubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -593,8 +573,6 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -658,8 +636,6 @@ presubmits:
           value: "0"
         - name: DOCKER_IN_DOCKER_IPV6_ENABLED
           value: "true"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         - name: IP_FAMILIES
@@ -724,8 +700,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -786,8 +760,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -848,8 +820,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -910,8 +880,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -972,8 +940,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -1036,8 +1002,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -1096,8 +1060,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43
@@ -1144,8 +1106,6 @@ presubmits:
         - name: BAZEL_BUILD_RBE_INSTANCE
         - name: BUILD_WITH_CONTAINER
           value: "0"
-        - name: GOMAXPROCS
-          value: "8"
         - name: GOPROXY
           value: http://athens.athens.svc.cluster.local:3000|direct
         image: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing/build-tools:master-3d06fb2820260b49713de5d906e085598facaa43

@@ -6,8 +6,6 @@ path_aliases:
 node_selector:
   testing: test-pool
 
-auto_max_procs: true
-
 env:
 - name: BUILD_WITH_CONTAINER
   value: "0"
@@ -173,6 +171,14 @@ requirement_presets:
     env:
     - name: ECR_REGISTRY
       value: 678412441677.dkr.ecr.us-west-2.amazonaws.com
+    - name: DOCKER_REGISTRY
+      value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker
+    - name: GHCR_REGISTRY
+      value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr
+    - name: QUAY_REGISTRY
+      value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/quay
+    - name: K8S_REGISTRY
+      value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/k8s
     - name: ISTIO_BASE_REGISTRY
       value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/docker/istio
     - name: ISTIO_BUILDKIT_IMAGE
@@ -181,6 +187,18 @@ requirement_presets:
       value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
     - name: METALLB_REGISTRY
       value: 678412441677.dkr.ecr.us-west-2.amazonaws.com/ghcr/istio/testing
+    volumeMounts:
+    - name: eks-pod-identity-token
+      mountPath: /var/run/secrets/pods.eks.amazonaws.com/serviceaccount
+      readOnly: true
+    volumes:
+    - name: eks-pod-identity-token
+      projected:
+        sources:
+        - serviceAccountToken:
+            audience: pods.eks.amazonaws.com
+            expirationSeconds: 86400
+            path: eks-pod-identity-token
   kind:
     volumeMounts:
     - mountPath: /lib/modules
@@ -223,19 +241,6 @@ requirement_presets:
         type: DirectoryOrCreate
       name: build-cache
   cratescache:
-    # Rust quite expensive to compile and benefits from faster CPUs.
-    # Additionally, its jobs are not super common, minimizing cache sharing when spread across all nodes.
-    # Prefer the "C3" nodes, which are faster. Since that cuts down the number of nodes we prefer, it results in better caching too.
-    podSpec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            preference:
-              matchExpressions:
-                - key: cloud.google.com/machine-family
-                  operator: In
-                  values: [c3, c3d, n4, c4d, c4a, c4]
     volumeMounts:
     - mountPath: /home/.cargo
       name: build-cache
