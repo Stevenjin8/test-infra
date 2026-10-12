@@ -92,7 +92,7 @@ postsubmits:
             memory: 4Gi
           requests:
             cpu: 500m
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 1Gi
         restartPolicy: Always
         securityContext:
@@ -228,7 +228,7 @@ postsubmits:
             memory: 4Gi
           requests:
             cpu: 500m
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 1Gi
         restartPolicy: Always
         securityContext:
@@ -353,11 +353,11 @@ presubmits:
         resources:
           limits:
             cpu: "2"
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 4Gi
           requests:
             cpu: 500m
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 1Gi
         restartPolicy: Always
         securityContext:
@@ -387,7 +387,7 @@ presubmits:
           type: DirectoryOrCreate
         name: build-cache
       - emptyDir:
-          sizeLimit: 32Gi
+          sizeLimit: 64Gi
         name: bazel-cache
       - name: netrc
         secret:
@@ -479,11 +479,11 @@ presubmits:
         resources:
           limits:
             cpu: "2"
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 4Gi
           requests:
             cpu: 500m
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 1Gi
         restartPolicy: Always
         securityContext:
@@ -508,7 +508,7 @@ presubmits:
           type: DirectoryOrCreate
         name: build-cache
       - emptyDir:
-          sizeLimit: 32Gi
+          sizeLimit: 64Gi
         name: bazel-cache
       - name: netrc
         secret:
@@ -598,11 +598,11 @@ presubmits:
         resources:
           limits:
             cpu: "2"
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 4Gi
           requests:
             cpu: 500m
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 1Gi
         restartPolicy: Always
         securityContext:
@@ -632,7 +632,7 @@ presubmits:
           type: DirectoryOrCreate
         name: build-cache
       - emptyDir:
-          sizeLimit: 32Gi
+          sizeLimit: 64Gi
         name: bazel-cache
       - name: netrc
         secret:
@@ -724,11 +724,11 @@ presubmits:
         resources:
           limits:
             cpu: "2"
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 4Gi
           requests:
             cpu: 500m
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 1Gi
         restartPolicy: Always
         securityContext:
@@ -753,7 +753,7 @@ presubmits:
           type: DirectoryOrCreate
         name: build-cache
       - emptyDir:
-          sizeLimit: 32Gi
+          sizeLimit: 64Gi
         name: bazel-cache
       - name: netrc
         secret:
@@ -845,11 +845,11 @@ presubmits:
         resources:
           limits:
             cpu: "2"
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 4Gi
           requests:
             cpu: 500m
-            ephemeral-storage: 32Gi
+            ephemeral-storage: 64Gi
             memory: 1Gi
         restartPolicy: Always
         securityContext:
@@ -874,7 +874,7 @@ presubmits:
           type: DirectoryOrCreate
         name: build-cache
       - emptyDir:
-          sizeLimit: 32Gi
+          sizeLimit: 64Gi
         name: bazel-cache
       - name: netrc
         secret:
