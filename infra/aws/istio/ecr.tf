@@ -20,6 +20,11 @@ resource "aws_ecr_pull_through_cache_rule" "ecr_public" {
   upstream_registry_url = "public.ecr.aws"
 }
 
+resource "aws_ecr_pull_through_cache_rule" "k8s" {
+  ecr_repository_prefix = "k8s"
+  upstream_registry_url = "registry.k8s.io"
+}
+
 resource "aws_ecr_repository_creation_template" "ghcr" {
   applied_for = ["PULL_THROUGH_CACHE"]
   prefix      = "ghcr"
@@ -44,6 +49,13 @@ resource "aws_ecr_repository_creation_template" "quay" {
 resource "aws_ecr_repository_creation_template" "ecr_public" {
   applied_for = ["PULL_THROUGH_CACHE"]
   prefix      = "ecr-public"
+
+  lifecycle_policy = local.ecr_pull_through_cache_lifecycle_policy
+}
+
+resource "aws_ecr_repository_creation_template" "k8s" {
+  applied_for = ["PULL_THROUGH_CACHE"]
+  prefix      = "k8s"
 
   lifecycle_policy = local.ecr_pull_through_cache_lifecycle_policy
 }
